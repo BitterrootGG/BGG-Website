@@ -3,23 +3,126 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BitterrootGG</title>
+  <title>BitterrootGG - Professional Land Management Services</title>
   <style>
-    :root { --bg:#0b1020; --fg:#e6eef8; --accent:#7bd389; }
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:var(--bg);color:var(--fg);display:flex;align-items:center;justify-content:center;height:100vh}
-    .card{max-width:820px;padding:32px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 6px 30px rgba(2,6,23,0.6)}
-    h1{margin:0 0 8px;font-size:2rem}
+    :root { --bg:#0b1020; --fg:#e6eef8; --accent:#7bd389; --card-bg:rgba(255,255,255,0.02); }
+    * { box-sizing:border-box; }
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:var(--bg);color:var(--fg);padding:20px;line-height:1.6}
+    .container{max-width:1200px;margin:0 auto}
+    header{text-align:center;margin-bottom:48px}
+    h1{margin:0 0 8px;font-size:2.5rem;color:var(--accent)}
+    h2{font-size:1.8rem;margin:32px 0 16px;color:var(--accent)}
+    h3{font-size:1.3rem;margin:24px 0 12px;color:#b9c6d9}
     p{margin:0 0 16px;color:#b9c6d9}
-    a.button{display:inline-block;padding:10px 16px;background:var(--accent);color:#04220a;border-radius:8px;text-decoration:none;font-weight:600}
-    footer{margin-top:18px;color:#9fb1c8;font-size:0.9rem}
+    .section{background:linear-gradient(180deg, var(--card-bg), rgba(255,255,255,0.01));border-radius:12px;padding:32px;margin-bottom:32px;box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+    .pricing-card{background:var(--card-bg);border:2px solid var(--accent);border-radius:8px;padding:24px;text-align:center;margin:24px 0}
+    .pricing-card .rate{font-size:3rem;font-weight:bold;color:var(--accent);margin:16px 0}
+    .pricing-card .per{font-size:1.2rem;color:#9fb1c8}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin:24px 0}
+    .gallery-item{background:var(--card-bg);border-radius:8px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+    .gallery-item img,.gallery-item video{width:100%;height:auto;display:block}
+    .gallery-item .caption{padding:12px;text-align:center;font-size:0.9rem;color:#9fb1c8}
+    .badge{display:inline-block;padding:4px 12px;background:var(--accent);color:#04220a;border-radius:4px;font-size:0.85rem;font-weight:600;margin:4px}
+    a.button{display:inline-block;padding:12px 24px;background:var(--accent);color:#04220a;border-radius:8px;text-decoration:none;font-weight:600;margin:8px}
+    a.button:hover{opacity:0.9}
+    footer{text-align:center;margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);color:#9fb1c8;font-size:0.9rem}
   </style>
 </head>
 <body>
-  <main class="card" role="main">
-    <h1>BitterrootGG</h1>
-    <p>Welcome — this is the placeholder page for bitterrootGG.com. Replace this with your content or a static site generator output.</p>
-    <a class="button" href="https://github.com/BitterrootGG/BGG-Website" target="_blank" rel="noopener">View source on GitHub</a>
-    <footer>Launched with GitHub Pages</footer>
-  </main>
+  <div class="container">
+    <header>
+      <h1>BitterrootGG</h1>
+      <p>Professional Land Management & Hazard Removal Services</p>
+    </header>
+
+    <section class="section">
+      <h2>Services</h2>
+      <p>We offer comprehensive land management services to meet your property needs:</p>
+      <ul style="color:#b9c6d9;font-size:1.1rem;line-height:2">
+        <li><strong style="color:var(--accent)">Land Management</strong> - Professional vegetation control and property maintenance</li>
+        <li><strong style="color:var(--accent)">Hazard Removal</strong> - Safe identification and removal of dangerous conditions</li>
+        <li><strong style="color:var(--accent)">Debris Removal/Clean Up</strong> - Complete site cleanup and debris hauling</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Pricing</h2>
+      <div class="pricing-card">
+        <h3>Daily Rate</h3>
+        <div class="rate">Contact for Quote</div>
+        <div class="per">per day</div>
+        <p style="margin-top:16px">Professional land management services charged at a competitive daily rate</p>
+      </div>
+      <p>All services are provided at our standard daily rate. Contact us for a customized quote based on your specific project needs.</p>
+      
+      <h3 style="margin-top:32px">Additional Charges</h3>
+      <p>The following services incur additional charges beyond the base daily rate:</p>
+      <ul style="color:#b9c6d9;font-size:1.05rem;line-height:1.8">
+        <li><strong style="color:var(--accent)">Grind Depth</strong> - Additional charge due to increased wear and tear on equipment</li>
+        <li><strong style="color:var(--accent)">Root Raking/Removal</strong> - Additional charge for extensive root work</li>
+        <li><strong style="color:var(--accent)">Leveling</strong> - Additional charge for site leveling and grading</li>
+      </ul>
+      <p style="margin-top:16px;font-style:italic;color:#9fb1c8">Contact us for detailed pricing on additional services specific to your project requirements.</p>
+    </section>
+
+    <section class="section">
+      <h2>Our Work</h2>
+      <h3>Before & After</h3>
+      <p>See the transformation we can achieve with professional land management and hazard removal.</p>
+      
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/400x300/2d3748/7bd389?text=Before+Photo+1" alt="Before hazard removal - Example 1" />
+          <div class="caption"><span class="badge">BEFORE</span> Overgrown vegetation and hazards</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/400x300/2d3748/7bd389?text=After+Photo+1" alt="After hazard removal - Example 1" />
+          <div class="caption"><span class="badge">AFTER</span> Cleared and safe property</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/400x300/2d3748/7bd389?text=Before+Photo+2" alt="Before hazard removal - Example 2" />
+          <div class="caption"><span class="badge">BEFORE</span> Hazardous conditions</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/400x300/2d3748/7bd389?text=After+Photo+2" alt="After hazard removal - Example 2" />
+          <div class="caption"><span class="badge">AFTER</span> Professional cleanup complete</div>
+        </div>
+      </div>
+
+      <h3>Hazard Documentation</h3>
+      <p>We document hazardous conditions to ensure thorough assessment and safe removal.</p>
+      
+      <div class="gallery">
+        <div class="gallery-item">
+          <video controls poster="https://via.placeholder.com/400x300/2d3748/7bd389?text=Hazard+Video+1">
+            <source src="hazard-assessment-1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="caption">Hazard Assessment - Site 1</div>
+        </div>
+        <div class="gallery-item">
+          <video controls poster="https://via.placeholder.com/400x300/2d3748/7bd389?text=Hazard+Video+2">
+            <source src="hazard-assessment-2.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="caption">Hazard Assessment - Site 2</div>
+        </div>
+      </div>
+      
+      <p style="margin-top:24px;font-size:0.9rem;color:#9fb1c8"><em>Note: Replace placeholder images and add your actual before/after photos and hazard assessment videos to showcase your work.</em></p>
+    </section>
+
+    <section class="section">
+      <h2>Get a Quote</h2>
+      <p>Contact us today for a customized daily rate quote for your land management project.</p>
+      <a class="button" href="mailto:contact@bitterrootgg.com">Request Quote</a>
+      <a class="button" href="https://github.com/BitterrootGG/BGG-Website" target="_blank" rel="noopener">View on GitHub</a>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 BitterrootGG. Professional Land Management Services.</p>
+      <p>Launched with GitHub Pages</p>
+    </footer>
+  </div>
 </body>
 </html>
