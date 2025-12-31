@@ -314,6 +314,17 @@
         </div>
       </div>
       
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="dump-trailer" />
+          <span>Dump trailer service</span>
+        </label>
+        <div class="item-details" id="dump-trailer-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="75" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="75" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
       <h3>Brush Clearing Services</h3>
       <p class="notes">Average production rate: 1-2 acres per day (varies by ground conditions, weather, and vegetation density)</p>
       <div class="checkbox-group">
@@ -346,6 +357,28 @@
         <div class="item-details" id="dense-brush-details" style="display:none;">
           <label>Days: <input type="number" class="service-hours" data-rate="3000" min="0" step="0.5" /></label>
           <label>Rate: $<input type="number" class="service-rate" value="3000" min="0" step="50" />/day</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="brush-removal" />
+          <span>Brush removal (general)</span>
+        </label>
+        <div class="item-details" id="brush-removal-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="125" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="125" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="timber-removal" />
+          <span>Timber removal/piling (owner discretion)</span>
+        </label>
+        <div class="item-details" id="timber-removal-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="140" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="140" min="0" step="5" />/hr</label>
         </div>
       </div>
       
@@ -405,6 +438,63 @@
           <label>Rate: $<input type="number" class="service-rate" value="110" min="0" step="5" />/hr</label>
         </div>
       </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="stump-removal" />
+          <span>Stump removal ($7 per inch of diameter)</span>
+        </label>
+        <div class="item-details" id="stump-removal-details" style="display:none;">
+          <label>Total Inches (diameter): <input type="number" class="service-hours" data-rate="7" min="0" step="1" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="7" min="0" step="1" />/inch</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="mulch-removal" />
+          <span>Mulch removal</span>
+        </label>
+        <div class="item-details" id="mulch-removal-details" style="display:none;">
+          <label>Cubic Yards: <input type="number" class="service-hours" data-rate="25" min="0" step="1" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="25" min="0" step="5" />/yd³</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="foundation-prep" />
+          <span>Foundation preparation</span>
+        </label>
+        <div class="item-details" id="foundation-prep-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="130" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="130" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="compacting-service" />
+          <span>Compacting service</span>
+        </label>
+        <div class="item-details" id="compacting-service-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="95" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="95" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <h3>Snow Removal</h3>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="snow-removal" />
+          <span>Snow removal service</span>
+        </label>
+        <div class="item-details" id="snow-removal-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="120" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="120" min="0" step="5" />/hr</label>
+        </div>
+      </div>
     </div>
     
     <!-- Mobilization & Travel -->
@@ -461,6 +551,28 @@
       </div>
       <div class="checkbox-group">
         <label><input type="checkbox" id="consider-access" /> <span>Special access requirements</span></label>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="access-building" />
+          <span>Building access to property</span>
+        </label>
+        <div class="item-details" id="access-building-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="140" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="140" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="permitting" />
+          <span>Permitting services (can be provided by owner)</span>
+        </label>
+        <div class="item-details" id="permitting-details" style="display:none;">
+          <label>Flat Fee: <input type="number" class="service-hours" data-rate="500" min="0" step="1" value="1" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="500" min="0" step="50" />/project</label>
+        </div>
       </div>
       
       <div class="form-group" style="margin-top:20px;">
