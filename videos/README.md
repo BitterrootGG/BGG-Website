@@ -25,8 +25,9 @@ This directory contains hazard assessment videos for the BitterrootGG website.
 
 ## Current Video References in index.html
 
-The website currently references:
+The website is configured to look for these exact filenames:
 - `videos/hazard-assessment-1.mp4`
 - `videos/hazard-assessment-2.mp4`
 
-Simply add your video files with these names, or update the paths in `index.html` to match your file names.
+**Option 1:** Name your video files exactly as shown above (easiest)
+**Option 2:** Update the video paths in `index.html` around line 100 to match your filename

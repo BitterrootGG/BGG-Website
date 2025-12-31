@@ -37,6 +37,8 @@ To add more before/after photo pairs:
 </div>
 ```
 
+**Note:** The `onerror` attribute shows a placeholder if the image file isn't found. Update the text parameter (`text=Before+Photo+3`) to match your numbering.
+
 ## Image Requirements
 
 ### Format
