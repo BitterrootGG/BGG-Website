@@ -235,6 +235,7 @@
       <h2>Equipment & Services</h2>
       
       <h3>Excavation Services</h3>
+      <p class="notes">Rental equipment (excavator, dozer, grader, compactor) billed at rental rate + transportation and operator cost</p>
       <div class="checkbox-group">
         <label>
           <input type="checkbox" class="service-item" data-service="excavator" />
@@ -465,6 +466,33 @@
       <div class="form-group" style="margin-top:20px;">
         <label for="additionalNotes">Additional Notes & Special Requirements</label>
         <textarea id="additionalNotes" placeholder="Include any special conditions, access issues, timeline constraints, or other relevant information"></textarea>
+      </div>
+    </div>
+    
+    <!-- Owner Responsibilities & Liability -->
+    <div class="section">
+      <h2>Owner Responsibilities & Liability</h2>
+      <div style="background:#2d1a1a;padding:16px;border-radius:8px;border-left:4px solid #d97989;">
+        <h3 style="margin-top:0;color:#f0a0a0;">Important: Property Owner Requirements</h3>
+        <p style="margin-bottom:12px;">Prior to the start of work, the property owner is <strong>required</strong> to:</p>
+        <ul style="margin:8px 0;padding-left:24px;line-height:1.8;">
+          <li>Walk the entire property where work will be performed</li>
+          <li>Identify and clearly mark with <strong>marking flags</strong> all of the following:
+            <ul style="margin-top:6px;">
+              <li>Property boundaries</li>
+              <li>Any hazards (rocks, stumps, wells, septic systems, utilities, etc.)</li>
+              <li>Timber or trees designated for removal</li>
+              <li>Any structures, landscaping, or features to be protected</li>
+            </ul>
+          </li>
+        </ul>
+        <p style="margin-top:12px;margin-bottom:0;"><strong>Liability Notice:</strong> Any damage to equipment resulting from the property owner's negligence or failure to complete the above requirements may result in charges for equipment repair or replacement. The owner assumes responsibility for accurate marking and identification of all site conditions.</p>
+      </div>
+      <div class="checkbox-group" style="margin-top:16px;">
+        <label>
+          <input type="checkbox" id="owner-walkthrough" required />
+          <span><strong>I acknowledge that I have completed (or will complete prior to work start) the property walkthrough and marking requirements outlined above</strong></span>
+        </label>
       </div>
     </div>
     
