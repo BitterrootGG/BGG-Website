@@ -314,6 +314,7 @@
       </div>
       
       <h3>Brush Clearing Services</h3>
+      <p class="notes">Average production rate: 1-2 acres per day (varies by density and terrain)</p>
       <div class="checkbox-group">
         <label>
           <input type="checkbox" class="service-item" data-service="light-brush" />
@@ -615,15 +616,34 @@
       // Display items
       const itemsContainer = document.getElementById('quote-items');
       if (items.length > 0) {
-        let itemsHTML = '<div style="margin-bottom:16px;"><h3 style="margin-top:0;">Selected Services:</h3>';
+        const servicesDiv = document.createElement('div');
+        servicesDiv.style.marginBottom = '16px';
+        
+        const heading = document.createElement('h3');
+        heading.style.marginTop = '0';
+        heading.textContent = 'Selected Services:';
+        servicesDiv.appendChild(heading);
+        
         items.forEach(item => {
-          itemsHTML += `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);">
-            <span>${item.name}</span>
-            <span>${item.quantity.toFixed(2)} × $${item.rate.toFixed(2)} = $${item.total.toFixed(2)}</span>
-          </div>`;
+          const itemDiv = document.createElement('div');
+          itemDiv.style.display = 'flex';
+          itemDiv.style.justifyContent = 'space-between';
+          itemDiv.style.padding = '8px 0';
+          itemDiv.style.borderBottom = '1px solid var(--border)';
+          
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = item.name;
+          
+          const priceSpan = document.createElement('span');
+          priceSpan.textContent = `${item.quantity.toFixed(2)} × $${item.rate.toFixed(2)} = $${item.total.toFixed(2)}`;
+          
+          itemDiv.appendChild(nameSpan);
+          itemDiv.appendChild(priceSpan);
+          servicesDiv.appendChild(itemDiv);
         });
-        itemsHTML += '</div>';
-        itemsContainer.innerHTML = itemsHTML;
+        
+        itemsContainer.innerHTML = '';
+        itemsContainer.appendChild(servicesDiv);
       } else {
         itemsContainer.innerHTML = '<p style="color:#9fb1c8;font-style:italic;">No services selected yet.</p>';
       }
