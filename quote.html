@@ -442,11 +442,12 @@
       <div class="checkbox-group">
         <label>
           <input type="checkbox" class="service-item" data-service="stump-removal" />
-          <span>Stump removal ($7 per inch of diameter)</span>
+          <span>Stump removal ($200 mobilization + $7 per inch of diameter)</span>
         </label>
         <div class="item-details" id="stump-removal-details" style="display:none;">
           <label>Total Inches (diameter): <input type="number" class="service-hours" data-rate="7" min="0" step="1" /></label>
           <label>Rate: $<input type="number" class="service-rate" value="7" min="0" step="1" />/inch</label>
+          <p class="notes" style="margin-left:0;margin-top:8px;">Includes $200 mobilization fee (added automatically)</p>
         </div>
       </div>
       
@@ -456,8 +457,8 @@
           <span>Mulch removal</span>
         </label>
         <div class="item-details" id="mulch-removal-details" style="display:none;">
-          <label>Cubic Yards: <input type="number" class="service-hours" data-rate="25" min="0" step="1" /></label>
-          <label>Rate: $<input type="number" class="service-rate" value="25" min="0" step="5" />/yd³</label>
+          <label>Hours: <input type="number" class="service-hours" data-rate="100" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="100" min="0" step="5" />/hr</label>
         </div>
       </div>
       
@@ -708,6 +709,10 @@
       let subtotal = 0;
       const items = [];
       
+      // Check if stump removal is selected
+      const stumpRemovalCheckbox = document.querySelector('[data-service="stump-removal"]');
+      const isStumpRemovalSelected = stumpRemovalCheckbox && stumpRemovalCheckbox.checked;
+      
       document.querySelectorAll('.service-item:checked').forEach(checkbox => {
         const service = checkbox.dataset.service;
         const details = document.getElementById(service + '-details');
@@ -733,6 +738,23 @@
           }
         }
       });
+      
+      // Add stump removal mobilization fee if stump removal is selected
+      if (isStumpRemovalSelected) {
+        const stumpRemovalDetails = document.getElementById('stump-removal-details');
+        if (stumpRemovalDetails) {
+          const stumpInches = parseFloat(stumpRemovalDetails.querySelector('.service-hours').value) || 0;
+          if (stumpInches > 0) {
+            items.push({
+              name: 'Stump removal mobilization fee',
+              quantity: 1,
+              rate: 200,
+              total: 200
+            });
+            subtotal += 200;
+          }
+        }
+      }
       
       // Calculate mobilization fee
       const distance = parseFloat(document.getElementById('projectDistance').value) || 0;
