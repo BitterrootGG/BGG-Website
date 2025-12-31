@@ -196,6 +196,79 @@
       </div>
     </div>
     
+    <!-- Quote Information & Scope of Work -->
+    <div class="section">
+      <h2>Quote Information & Scope of Work</h2>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="quoteDate">Quote Date *</label>
+          <input type="date" id="quoteDate" required />
+        </div>
+        <div class="form-group">
+          <label for="validThrough">Valid Through *</label>
+          <input type="date" id="validThrough" required />
+        </div>
+      </div>
+      
+      <h3>1. Scope of Work</h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="scope-forestry" /> <span>Forestry Mulching</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="scope-grinding" /> <span>Stump Grinding</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="scope-excavation" /> <span>Stump Excavation / Removal</span></label>
+      </div>
+      
+      <div class="form-group" style="margin-top:20px;">
+        <label for="workDescription">Description of Work</label>
+        <textarea id="workDescription" rows="4" placeholder="Detailed description of the work to be performed..."></textarea>
+      </div>
+      
+      <h3>Vegetation Size Limits</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="maxTreeDiameter">Maximum tree diameter (inches DBH)</label>
+          <input type="number" id="maxTreeDiameter" min="0" step="1" />
+        </div>
+        <div class="form-group">
+          <label for="stumpDiameterRange">Stump diameter range (inches)</label>
+          <input type="text" id="stumpDiameterRange" placeholder="e.g., 6-24" />
+        </div>
+        <div class="form-group">
+          <label for="grindDepth">Grind depth (inches below grade)</label>
+          <input type="number" id="grindDepth" min="0" step="1" />
+        </div>
+      </div>
+      
+      <div style="background:#2d1a1a;padding:16px;border-radius:8px;margin-top:16px;border-left:4px solid #d97989;">
+        <h4 style="margin-top:0;color:#f0a0a0;">Exclusions (unless added in writing)</h4>
+        <p style="margin-bottom:0;line-height:1.8;">Rocks, scrap metal, wire, fencing, concrete, foundations, buried debris, hazardous materials, or unknown underground obstructions.</p>
+      </div>
+      
+      <h3 style="margin-top:24px;">2. Pricing Structure</h3>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
+        <div class="checkbox-group">
+          <label><input type="radio" name="pricingStructure" id="pricing-acre" value="acre" /> <span>Per Acre</span></label>
+        </div>
+        <div class="checkbox-group">
+          <label><input type="radio" name="pricingStructure" id="pricing-day" value="day" /> <span>Per Day</span></label>
+        </div>
+        <div class="checkbox-group">
+          <label><input type="radio" name="pricingStructure" id="pricing-hourly" value="hourly" /> <span>Hourly</span></label>
+        </div>
+        <div class="checkbox-group">
+          <label><input type="radio" name="pricingStructure" id="pricing-flat" value="flat" /> <span>Flat Rate</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="customRate">Custom Rate (optional)</label>
+        <input type="number" id="customRate" min="0" step="0.01" placeholder="Enter custom rate if applicable" />
+      </div>
+    </div>
+    
     <!-- Site Assessment Checklist -->
     <div class="section">
       <h2>Site Assessment Checklist</h2>
