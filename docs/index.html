@@ -1,433 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bitterroot Ground & Gravel | Professional Land Management</title>
+  <meta charset="utf-8">
+  <title>Bitterroot Ground & Gravel | Professional Land Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="description" content="Bitterroot Ground & Gravel provides professional forestry mulching, defensible space clearing, access creation, site preparation, and material delivery throughout the Bitterroot Valley and Western Montana.">
+  <meta name="description" content="Bitterroot Ground & Gravel provides professional forestry mulching, defensible space clearing, access creation, site preparation, and material delivery throughout Western Montana.">
 
-<style>
-:root{
-  --bg:#0b1020;
-  --fg:#e6eef8;
-  --accent:#7bd389;
-  --accent2:#c2a45d;
-  --muted:#9aa4b2;
-  --card:rgba(255,255,255,.04);
-  --border:rgba(255,255,255,.12);
-}
+  <!-- Google Ads global site tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17830021528"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17830021528');
+  </script>
 
-*{box-sizing:border-box}
+  <style>
+    :root {
+      --bg:#0b1020;
+      --fg:#e6eef8;
+      --accent:#7bd389;
+      --muted:#9aa4b2;
+      --card:rgba(255,255,255,0.05);
+      --border:rgba(255,255,255,0.12);
+    }
 
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:var(--bg);
-  color:var(--fg);
-  line-height:1.6;
-}
+    * { box-sizing: border-box; }
 
-header{
-  padding:4.5rem 1.5rem;
-  text-align:center;
-  border-bottom:1px solid var(--border);
-}
+    body {
+      margin:0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--fg);
+      line-height:1.6;
+    }
 
-header h1{
-  font-size:2.6rem;
-  margin-bottom:.75rem;
-}
+    header {
+      padding:4rem 1.5rem;
+      text-align:center;
+      border-bottom:1px solid var(--border);
+    }
 
-header p{
-  max-width:780px;
-  margin:0 auto;
-  color:var(--muted);
-  font-size:1.1rem;
-}
+    header h1 {
+      margin:0;
+      font-size:2.4rem;
+      letter-spacing:0.03em;
+    }
 
-section{
-  padding:3.75rem 1.5rem;
-  max-width:1100px;
-  margin:0 auto;
-}
+    header p {
+      color:var(--muted);
+      max-width:720px;
+      margin:1rem auto 2rem;
+    }
 
-h2{
-  color:var(--accent);
-  font-size:2rem;
-  margin-bottom:1rem;
-}
+    a.button {
+      display:inline-block;
+      padding:0.75rem 1.25rem;
+      background:var(--accent);
+      color:#0b1020;
+      text-decoration:none;
+      font-weight:600;
+      border-radius:6px;
+    }
 
-.section-intro{
-  max-width:780px;
-  color:var(--muted);
-  margin-bottom:2.25rem;
-}
+    main {
+      max-width:1100px;
+      margin:0 auto;
+      padding:3rem 1.5rem;
+    }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:1.75rem;
-}
+    section {
+      margin-bottom:3rem;
+    }
 
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  padding:1.75rem;
-  border-radius:8px;
-}
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:1.5rem;
+    }
 
-.card h3{
-  color:var(--accent);
-  margin-top:0;
-}
-
-.card ul{
-  padding-left:1.1rem;
-}
-
-.card li{
-  margin-bottom:.4rem;
-}
-
-.best-for{
-  margin-top:1rem;
-  font-size:.85rem;
-  color:var(--accent2);
-  font-style:italic;
-}
-
-/* PHOTO STRIP */
-.photo-strip{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:1rem;
-  margin:3rem auto;
-}
-
-.photo-placeholder{
-  height:190px;
-  background:linear-gradient(135deg,#1a2238,#0b1020);
-  border:1px dashed var(--border);
-  border-radius:8px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--muted);
-  font-size:.9rem;
-  text-align:center;
-}
-
-/* ESTIMATE FORM */
-.estimate-form{
-  max-width:780px;
-  margin:0 auto;
-}
-
-.estimate-form label{
-  display:block;
-  margin-top:1rem;
-  font-weight:600;
-}
-
-.estimate-form input,
-.estimate-form select{
-  width:100%;
-  margin-top:.4rem;
-  padding:.65rem;
-  border-radius:6px;
-  border:1px solid var(--border);
-  background:#0f172a;
-  color:var(--fg);
-}
-
-.estimate-form small{
-  color:var(--muted);
-  display:block;
-  margin-top:.25rem;
-}
-
-.estimate-result{
-  margin-top:1.75rem;
-  padding:1.25rem;
-  border:1px solid var(--border);
-  border-radius:8px;
-  background:rgba(0,0,0,.3);
-}
-
-.disclaimer{
-  margin-top:1rem;
-  font-size:.85rem;
-  color:var(--muted);
-}
-
-/* CTA */
-.cta{
-  background:linear-gradient(135deg,#7bd389,#4fae8a);
-  color:#0b1020;
-  padding:3rem 1.5rem;
-  text-align:center;
-  border-radius:14px;
-}
-
-.cta h2{color:#0b1020}
-
-.cta a{
-  display:inline-block;
-  margin-top:1rem;
-  background:#0b1020;
-  color:var(--fg);
-  padding:.85rem 1.75rem;
-  border-radius:6px;
-  text-decoration:none;
-  font-weight:600;
-}
-
-/* FOOTER */
-footer{
-  padding:2rem 1.5rem;
-  text-align:center;
-  border-top:1px solid var(--border);
-  color:var(--muted);
-  font-size:.9rem;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <h1>Bitterroot Ground & Gravel</h1>
-  <p>
-    Professional land management services focused on wildfire mitigation, access,
-    and build-ready property across the Bitterroot Valley and Western Montana.
-  </p>
-</header>
-
-<section>
-  <h2>Land Management Services</h2>
-  <p class="section-intro">
-    We specialize in practical land solutions. That means reducing wildfire risk,
-    creating reliable access, and preparing property for long-term use without
-    unnecessary disturbance or guesswork.
-  </p>
-
-  <div class="grid">
-
-    <div class="card">
-      <h3>Forestry Mulching & Vegetation Management</h3>
-      <p>
-        Forestry mulching is an efficient way to remove brush, saplings, and small
-        diameter trees while leaving the soil intact. Material is processed in
-        place, reducing erosion and minimizing future regrowth.
-      </p>
-      <ul>
-        <li>Mechanical removal of brush and ladder fuels</li>
-        <li>Minimal soil disturbance compared to traditional clearing</li>
-        <li>Improved access and visibility across acreage</li>
-        <li>Effective preparation for defensible space or development</li>
-      </ul>
-      <p class="best-for">
-        Best for: large acreage, overgrown parcels, wildfire fuel reduction
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Defensible Space & Wildfire Mitigation</h3>
-      <p>
-        Defensible space is about controlling fire behavior, not clear-cutting.
-        We use zone-based clearing techniques to reduce fire intensity while
-        maintaining the character and usability of your property.
-      </p>
-      <ul>
-        <li>Zone 1–3 defensible space strategies</li>
-        <li>Removal of ladder fuels and excessive ground cover</li>
-        <li>Improved emergency access and structure protection</li>
-        <li>Methods aligned with Firewise principles</li>
-      </ul>
-      <p class="best-for">
-        Best for: homes, cabins, rural residences, HOA properties
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Access Creation & Site Preparation</h3>
-      <p>
-        Reliable access is foundational. We create and improve access corridors,
-        driveways, and equipment routes that support construction, utilities, and
-        ongoing property use.
-      </p>
-      <ul>
-        <li>Driveway and access road corridors</li>
-        <li>Clearing for utilities, fencing, and equipment movement</li>
-        <li>Preparation for building pads and staging areas</li>
-        <li>Coordination with future development plans</li>
-      </ul>
-      <p class="best-for">
-        Best for: undeveloped land, new builds, infrastructure access
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Gravel, Rock & Topsoil Delivery</h3>
-      <p>
-        We deliver locally sourced materials with clear pricing and realistic
-        delivery expectations. No mystery loads, no inflated quantities.
-      </p>
-      <ul>
-        <li>Driveway gravel and base material</li>
-        <li>Topsoil for restoration and finish work</li>
-        <li>Erosion control and drainage applications</li>
-      </ul>
-      <p class="best-for">
-        Best for: driveways, pads, repairs, site finishing
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<section class="photo-strip">
-  <div class="photo-placeholder">Forestry Mulching Operations</div>
-  <div class="photo-placeholder">Defensible Space Clearing</div>
-  <div class="photo-placeholder">Access & Site Preparation</div>
-</section>
-
-<section>
-  <h2>How Projects Work</h2>
-  <div class="grid">
-    <div class="card"><strong>1.</strong> Initial contact and property details</div>
-    <div class="card"><strong>2.</strong> Site review and scope definition</div>
-    <div class="card"><strong>3.</strong> Clear pricing and scheduling</div>
-    <div class="card"><strong>4.</strong> Efficient execution and close-out</div>
-  </div>
-</section>
-
-<section>
-  <h2>Why Clients Trust Bitterroot Ground & Gravel</h2>
-  <div class="grid">
-    <div class="card">20+ years of operational and heavy-equipment experience</div>
-    <div class="card">Professional forestry and land-management equipment</div>
-    <div class="card">Safety-focused, controlled operations</div>
-    <div class="card">Local terrain, access, and wildfire knowledge</div>
-  </div>
-</section>
-
-<section>
-  <h2>Project Estimate Calculator</h2>
-  <p class="section-intro">
-    This calculator provides a preliminary cost range based on typical production
-    rates and local material pricing. Final quotes require site evaluation.
-  </p>
-
-  <form class="estimate-form" onsubmit="return calcEstimate();">
-
-    <label>Full Name *</label>
-    <input required>
-
-    <label>Email *</label>
-    <input type="email" required>
-
-    <label>Phone *</label>
-    <input type="tel" required>
-
-    <label>Property Location *</label>
-    <input required>
-
-    <label>Service *</label>
-    <select id="service" required>
-      <option value="">Select a service</option>
-      <option value="mulching">Forestry Mulching</option>
-      <option value="site">Site Prep / Access / Clearing</option>
-      <option value="materials">Gravel / Rock / Topsoil Delivery</option>
-    </select>
-
-    <label>Estimated Project Size *</label>
-    <input type="number" id="size" step="0.1" required>
-    <small>
-      Acres for forestry mulching or land clearing.  
-      Cubic yards for material delivery.
-    </small>
-
-    <label>Vegetation Density (mulching only)</label>
-    <select id="density">
-      <option value="1">Light</option>
-      <option value="1.5">Moderate</option>
-      <option value="2">Heavy</option>
-    </select>
-
-    <label>Access Conditions *</label>
-    <select id="access" required>
-      <option value="">Select access</option>
-      <option value="1">Good</option>
-      <option value="1.25">Moderate</option>
-      <option value="1.5">Difficult</option>
-    </select>
-
-    <label>
-      <input type="checkbox" required>
-      I understand this is a non-binding estimate.
-    </label>
-
-    <button type="submit" style="margin-top:1.5rem;">Calculate Estimate</button>
-
-    <div id="out" class="estimate-result" style="display:none;"></div>
-
-    <p class="disclaimer">
-      Estimates are non-binding and provided for planning purposes only.
-      Final pricing requires site evaluation, written scope, and confirmation.
-    </p>
-  </form>
-</section>
-
-<section class="cta">
-  <h2>Clearing. Access. Peace of Mind.</h2>
-  <a href="mailto:scheduling@bitterrootgg.com">Request an Official Quote</a>
-</section>
-
-<footer>
-  © Bitterroot Ground & Gravel · Western Montana
-</footer>
-
-<script>
-function calcEstimate(){
-  const service=document.getElementById("service").value;
-  const size=parseFloat(document.getElementById("size").value);
-  const density=parseFloat(document.getElementById("density").value||1);
-  const access=parseFloat(document.getElementById("access").value||1);
-
-  let low=0,high=0,notes="";
-
-  if(service==="mulching"){
-    let acresPerDay=4;
-    if(density>=2){acresPerDay=1.5}
-    else if(density>=1.5){acresPerDay=3}
-    acresPerDay=acresPerDay/access;
-    const days=Math.max(1,Math.ceil(size/acresPerDay));
-    low=days*1700;
-    high=days*3500;
-    notes=`Estimated ${days} production day(s) based on vegetation density and access.`;
-  }
-  else if(service==="site"){
-    low=2500;
-    high=7500;
-    notes="Pricing varies by scope, terrain, and mobilization requirements.";
-  }
-  else if(service==="materials"){
-    low=(size*23)+300;
-    high=(size*30)+900;
-    notes="Estimate based on local material rates plus delivery.";
-  }
-
-  const out=document.getElementById("out");
-  out.style.display="block";
-  out.innerHTML=
-    `<strong>Estimated Cost Range:</strong><br>
-     $${Math.round(low).toLocaleString()} – $${Math.round(high).toLocaleString()}<br><br>
-     <em>${notes}</em>`;
-  return false;
-}
-</script>
-
-</body>
-</html>
+    .card {
+      background:var(--card);
+      padding:1.5rem;
+      border-radius:10px;
+      border:1px solid
