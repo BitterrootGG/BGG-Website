@@ -1,3 +1,279 @@
-body {
-  background: red !important;
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bitterroot Ground & Gravel | Professional Land Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="Forestry mulching, defensible space, access creation, and material delivery across Western Montana. Built for landowners, HOAs, and contractors.">
+
+  <!-- Google Ads global site tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17830021528"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17830021528');
+  </script>
+
+  <style>
+    :root {
+      --bg:#0b1020;
+      --fg:#e6eef8;
+      --accent:#7bd389;
+      --muted:#9aa4b2;
+      --border:rgba(255,255,255,0.12);
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--fg);
+      line-height:1.6;
+    }
+
+    header {
+      padding:3.5rem 1.25rem;
+      text-align:center;
+      border-bottom:1px solid var(--border);
+    }
+
+    header h1 {
+      margin:0;
+      font-size:2.2rem;
+    }
+
+    header p {
+      max-width:800px;
+      margin:1rem auto 2rem;
+      color:var(--muted);
+    }
+
+    .button {
+      display:inline-block;
+      padding:0.75rem 1.4rem;
+      background:var(--accent);
+      color:#0b1020;
+      font-weight:600;
+      border-radius:6px;
+      text-decoration:none;
+    }
+
+    main {
+      max-width:1200px;
+      margin:0 auto;
+      padding:3rem 1.25rem;
+    }
+
+    section {
+      margin-bottom:4rem;
+    }
+
+    h2 { margin-bottom:1rem; }
+
+    /* SERVICE CARDS */
+    .service-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:1.5rem;
+    }
+
+    .service-card {
+      position:relative;
+      display:block;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      text-decoration:none;
+    }
+
+    .service-card img {
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .service-label {
+      position:absolute;
+      bottom:0;
+      width:100%;
+      padding:0.9rem;
+      background:linear-gradient(to top,rgba(0,0,0,0.75),transparent);
+      color:#fff;
+      font-weight:700;
+    }
+
+    /* VARIANT SELECTOR */
+    .variant-select {
+      max-width:420px;
+      margin:2rem auto;
+      text-align:center;
+    }
+
+    select {
+      width:100%;
+      padding:0.6rem;
+      background:#11162a;
+      color:var(--fg);
+      border:1px solid var(--border);
+      border-radius:6px;
+    }
+
+    /* QUOTE CALCULATOR */
+    .calculator {
+      max-width:520px;
+      margin:2rem auto;
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:1.5rem;
+    }
+
+    .calculator input,
+    .calculator button {
+      width:100%;
+      padding:0.7rem;
+      margin-bottom:0.75rem;
+      border-radius:6px;
+      border:1px solid var(--border);
+      background:#11162a;
+      color:var(--fg);
+    }
+
+    .calculator button {
+      background:var(--accent);
+      color:#0b1020;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    footer {
+      border-top:1px solid var(--border);
+      padding:2rem 1rem;
+      text-align:center;
+      color:var(--muted);
+    }
+
+    footer a {
+      color:var(--accent);
+      text-decoration:none;
+    }
+
+    /* MOBILE */
+    @media (max-width:768px) {
+      header h1 { font-size:1.9rem; }
+      .service-card img { height:170px; }
+      section { margin-bottom:3rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Bitterroot Ground & Gravel</h1>
+  <p>Clearing. Access. Peace of Mind. Built for real properties and real use.</p>
+  <a class="button" href="#quote">Request a Quote</a>
+</header>
+
+<main>
+
+  <!-- SERVICE CARDS -->
+  <section>
+    <h2>Our Services</h2>
+
+    <div class="service-grid">
+      <a class="service-card" href="services/forestry-mulching.html" data-service="Forestry Mulching" data-value="350">
+        <img src="images/forestry-mulching.jpeg" alt="">
+        <div class="service-label">Forestry Mulching</div>
+      </a>
+
+      <a class="service-card" href="services/defensible-space.html" data-service="Defensible Space" data-value="300">
+        <img src="images/defensible-space.jpeg" alt="">
+        <div class="service-label">Defensible Space</div>
+      </a>
+
+      <a class="service-card" href="services/access-creation.html" data-service="Access Creation" data-value="250">
+        <img src="images/site-access.jpeg" alt="">
+        <div class="service-label">Access Creation</div>
+      </a>
+
+      <a class="service-card" href="services/gravel-materials.html" data-service="Gravel Delivery" data-value="150">
+        <img src="images/gravel-delivery.jpeg" alt="">
+        <div class="service-label">Gravel & Materials</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- VARIANT SELECTOR -->
+  <section class="variant-select">
+    <h2>Who Is This For?</h2>
+    <select id="audience">
+      <option value="Landowner">Private Landowner</option>
+      <option value="HOA">HOA / Community</option>
+      <option value="Contractor">Contractor / Developer</option>
+    </select>
+  </section>
+
+  <!-- QUOTE CALCULATOR -->
+  <section id="quote">
+    <h2>Quick Project Estimate</h2>
+
+    <div class="calculator">
+      <input type="number" id="acreage" placeholder="Estimated acreage or area">
+      <button onclick="submitQuote()">Get Estimate</button>
+      <p id="estimateOutput"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © Bitterroot Ground & Gravel |
+  <a href="tel:+14062244199" onclick="trackCall('General')">Call 406-224-4199</a>
+</footer>
+
+<script>
+  let selectedService = 'General';
+  let serviceValue = 1;
+
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', function () {
+      selectedService = this.dataset.service;
+      serviceValue = this.dataset.value;
+
+      gtag('event','service_click',{
+        'event_category':'Services',
+        'event_label':selectedService
+      });
+    });
+  });
+
+  function submitQuote(){
+    const acres = document.getElementById('acreage').value || 1;
+    const estimate = acres * serviceValue;
+
+    document.getElementById('estimateOutput').innerText =
+      `Estimated starting range: $${estimate.toLocaleString()}`;
+
+    gtag('event','conversion',{
+      'send_to':'AW-17830021528/wVfwCLj1gdsbEJiTgrZC',
+      'value':serviceValue,
+      'currency':'USD',
+      'event_label':selectedService
+    });
+  }
+
+  function trackCall(service){
+    gtag('event','call_click',{
+      'event_category':'Phone',
+      'event_label':service
+    });
+  }
+</script>
+
+</body>
+</html>
