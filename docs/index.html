@@ -7,7 +7,7 @@
 
   <meta name="description" content="Bitterroot Ground & Gravel provides forestry mulching, defensible space, access creation, and material delivery across Western Montana.">
 
-  <!-- Google Ads + GA4 placeholder -->
+  <!-- Google Ads -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17830021528"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -17,7 +17,7 @@
   </script>
 
   <style>
-    /* ===== RESET / BASE ===== */
+    /* ================= BASE ================= */
     * {
       box-sizing: border-box;
     }
@@ -35,16 +35,17 @@
       text-decoration: none;
     }
 
-    /* ===== LAYOUT ===== */
+    /* ================= HEADER ================= */
     header {
       text-align: center;
-      padding: 3rem 1.25rem;
+      padding: 3.5rem 1.25rem;
       border-bottom: 1px solid rgba(255,255,255,0.12);
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
+      letter-spacing: 0.03em;
     }
 
     header p {
@@ -55,13 +56,14 @@
 
     .button {
       display: inline-block;
-      padding: 0.75rem 1.4rem;
+      padding: 0.8rem 1.5rem;
       background: #7bd389;
       color: #0b1020;
       font-weight: 600;
       border-radius: 6px;
     }
 
+    /* ================= LAYOUT ================= */
     main {
       max-width: 1200px;
       margin: 0 auto;
@@ -73,10 +75,10 @@
     }
 
     h2 {
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
-    /* ===== SERVICE CARDS ===== */
+    /* ================= SERVICE CARDS ================= */
     .service-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -85,7 +87,6 @@
 
     .service-card {
       position: relative;
-      display: block;
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.12);
@@ -94,7 +95,7 @@
 
     .service-card img {
       width: 100%;
-      height: 200px;
+      height: 210px;
       object-fit: cover;
       display: block;
     }
@@ -104,17 +105,18 @@
       bottom: 0;
       width: 100%;
       padding: 0.9rem;
-      background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0));
+      background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
       font-weight: 700;
+      letter-spacing: 0.03em;
     }
 
-    /* ===== QUOTE BOX ===== */
+    /* ================= CALCULATOR ================= */
     .calculator {
       max-width: 520px;
       margin: 0 auto;
       padding: 1.5rem;
-      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
       background: #11162a;
     }
 
@@ -136,6 +138,7 @@
       cursor: pointer;
     }
 
+    /* ================= FOOTER ================= */
     footer {
       border-top: 1px solid rgba(255,255,255,0.12);
       padding: 2rem 1rem;
@@ -143,14 +146,14 @@
       color: #9aa4b2;
     }
 
-    /* ===== MOBILE ===== */
+    /* ================= MOBILE ================= */
     @media (max-width: 768px) {
       header h1 {
         font-size: 1.9rem;
       }
 
       .service-card img {
-        height: 170px;
+        height: 180px;
       }
 
       section {
@@ -170,32 +173,34 @@
 
 <main>
 
+  <!-- SERVICES -->
   <section>
     <h2>Our Services</h2>
 
     <div class="service-grid">
       <a class="service-card" href="#">
-        <img src="images/forestry-mulching.jpeg" alt="Forestry mulching">
+        <img src="assets/forestry-mulching.jpeg" alt="Forestry mulching">
         <div class="service-label">Forestry Mulching</div>
       </a>
 
       <a class="service-card" href="#">
-        <img src="images/defensible-space.jpeg" alt="Defensible space">
+        <img src="assets/defensible-space.jpeg" alt="Defensible space">
         <div class="service-label">Defensible Space</div>
       </a>
 
       <a class="service-card" href="#">
-        <img src="images/site-access.jpeg" alt="Access creation">
+        <img src="assets/site-access.jpeg" alt="Access creation">
         <div class="service-label">Access Creation</div>
       </a>
 
       <a class="service-card" href="#">
-        <img src="images/gravel-delivery.jpeg" alt="Gravel delivery">
+        <img src="assets/gravel-delivery.jpeg" alt="Gravel delivery">
         <div class="service-label">Gravel & Materials</div>
       </a>
     </div>
   </section>
 
+  <!-- QUOTE -->
   <section id="quote">
     <h2>Quick Project Estimate</h2>
 
