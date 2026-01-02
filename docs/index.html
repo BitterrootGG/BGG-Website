@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitterroot Ground & Gravel | Land Management & Forestry Services</title>
+
+<style>
+:root{
+  --bg:#0b1020;
+  --fg:#e6eef8;
+  --accent:#7bd389;
+  --accent2:#c2a45d;
+  --muted:#9aa4b2;
+  --card:rgba(255,255,255,.04);
+  --border:rgba(255,255,255,.12);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--fg);
+  line-height:1.6;
+}
+
+header{
+  padding:4rem 1.5rem;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+}
+
+section{
+  padding:3.5rem 1.5rem;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+h2{color:var(--accent)}
+
+.section-intro{
+  max-width:720px;
+  color:var(--muted);
+  margin-bottom:2rem;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.5rem;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:1.5rem;
+  border-radius:8px;
+}
+
+.card h3{color:var(--accent)}
+
+.best-for{
+  margin-top:1rem;
+  font-size:.85rem;
+  color:var(--accent2);
+  font-style:italic;
+}
+
+.photo-strip{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+  margin:3rem auto;
+  max-width:1100px;
+}
+
+.photo-placeholder{
+  height:180px;
+  background:linear-gradient(135deg,#1a2238,#0b1020);
+  border:1px dashed var(--border);
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--muted);
+}
+
+.estimate-form{
+  max-width:720px;
+  margin:0 auto;
+}
+
+.estimate-form label{
+  display:block;
+  margin-top:1rem;
+  font-weight:600;
+}
+
+.estimate-form input,
+.estimate-form select,
+.estimate-form textarea{
+  width:100%;
+  margin-top:.4rem;
+  padding:.6rem;
+  border-radius:6px;
+  border:1px solid var(--border);
+  background:#0f172a;
+  color:var(--fg);
+}
+
+.estimate-result{
+  margin-top:1.5rem;
+  padding:1rem;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:rgba(0,0,0,.25);
+}
+
+.disclaimer{
+  margin-top:1rem;
+  font-size:.85rem;
+  color:var(--muted);
+}
+
+.cta{
+  background:linear-gradient(135deg,#7bd389,#4fae8a);
+  color:#0b1020;
+  padding:2.5rem 1.5rem;
+  text-align:center;
+  border-radius:12px;
+}
+
+.cta a{
+  display:inline-block;
+  background:#0b1020;
+  color:var(--fg);
+  padding:.75rem 1.5rem;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+footer{
+  padding:2rem 1.5rem;
+  text-align:center;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Bitterroot Ground & Gravel</h1>
+<p>Professional land management, forestry mulching, and site preparation services throughout Western Montana.</p>
+</header>
+
+<section>
+<h2>Land Management Services</h2>
+<p class="section-intro">We clear land for access, safety, and long-term usability using professional equipment and practical methods.</p>
+
+<div class="grid">
+<div class="card">
+<h3>Forestry Mulching & Fuel Reduction</h3>
+<p>Mechanical removal of brush and saplings while preserving soil structure.</p>
+<p class="best-for">Best for: acreage, wildfire mitigation</p>
+</div>
+
+<div class="card">
+<h3>Defensible Space Clearing</h3>
+<p>Zone-based clearing around homes and structures to reduce wildfire risk.</p>
+<p class="best-for">Best for: homeowners, HOAs</p>
+</div>
+
+<div class="card">
+<h3>Access Creation & Site Prep</h3>
+<p>Driveways, equipment access, and build-ready surfaces.</p>
+<p class="best-for">Best for: undeveloped property</p>
+</div>
+</div>
+</section>
+
+<section class="photo-strip">
+<div class="photo-placeholder">Forestry Mulching</div>
+<div class="photo-placeholder">Defensible Space</div>
+<div class="photo-placeholder">Access Creation</div>
+</section>
+
+<section>
+<h2>How Projects Work</h2>
+<div class="grid">
+<div class="card">Contact & Details</div>
+<div class="card">Site Review</div>
+<div class="card">Quote & Scope</div>
+<div class="card">Execution</div>
+</div>
+</section>
+
+<section>
+<h2>Why Clients Trust Us</h2>
+<div class="grid">
+<div class="card">20+ years operational experience</div>
+<div class="card">Professional forestry equipment</div>
+<div class="card">Safety-focused operations</div>
+<div class="card">Local terrain knowledge</div>
+</div>
+</section>
+
+<section>
+<h2>Estimate Calculator</h2>
+<p class="section-intro">This tool provides a preliminary cost range. Final pricing requires site review.</p>
+
+<form class="estimate-form" onsubmit="return calcEstimate();">
+
+<label>Full Name *</label>
+<input required>
+
+<label>Email *</label>
+<input type="email" required>
+
+<label>Phone *</label>
+<input type="tel" required>
+
+<label>Property Location *</label>
+<input required>
+
+<label>Service *</label>
+<select id="service" required>
+<option value="">Select</option>
+<option value="land">Land / Forestry Services</option>
+<option value="materials">Gravel / Topsoil Delivery</option>
+</select>
+
+<label>Project Size *</label>
+<input type="number" id="size" step="0.1" required>
+<small>Acres for land services, cubic yards for materials</small>
+
+<label>Vegetation Density</label>
+<select id="density">
+<option value="1">Light</option>
+<option value="1.5">Moderate</option>
+<option value="2">Heavy</option>
+</select>
+
+<label>Access Conditions *</label>
+<select id="access" required>
+<option value="">Select</option>
+<option value="1">Good</option>
+<option value="1.25">Moderate</option>
+<option value="1.5">Difficult</option>
+</select>
+
+<label>
+<input type="checkbox" required>
+I understand this is a non-binding estimate.
+</label>
+
+<button type="submit" style="margin-top:1.5rem;">Calculate Estimate</button>
+
+<div id="out" class="estimate-result" style="display:none;"></div>
+
+<p class="disclaimer">
+Estimates are based on typical Western Montana market rates and production assumptions.
+Final pricing may vary based on site conditions, mobilization, and scheduling.
+</p>
+</form>
+</section>
+
+<section class="cta">
+<h2>Clearing. Access. Peace of Mind.</h2>
+<a href="mailto:scheduling@bitterrootgg.com">Request an Official Quote</a>
+</section>
+
+<footer>
+© Bitterroot Ground & Gravel
+</footer>
+
+<script>
+function calcEstimate(){
+  const service=document.getElementById("service").value;
+  const size=parseFloat(document.getElementById("size").value);
+  const density=parseFloat(document.getElementById("density").value);
+  const access=parseFloat(document.getElementById("access").value);
+
+  let low=0,high=0;
+
+  if(service==="materials"){
+    low=size*23;
+    high=size*35;
+  }else{
+    low=size*200*density*access;
+    high=size*375*density*access;
+  }
+
+  const out=document.getElementById("out");
+  out.style.display="block";
+  out.innerHTML=`<strong>Estimated Range:</strong><br>$${Math.round(low).toLocaleString()} – $${Math.round(high).toLocaleString()}`;
+  return false;
+}
+</script>
+
+</body>
+</html>
