@@ -13,9 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bitterrootgg.com/">
 
-<!-- =========================
-     Google Ads (gtag.js) - Installed
-     ========================= -->
+<!-- Google Ads (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17830021528"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -170,25 +168,47 @@ header.hero{padding:46px 0 18px}
 .heroSide ul{margin:0;padding-left:18px;color:var(--muted)}
 .heroSide li{margin:8px 0}
 
-.heroImage{
-  border-top:1px solid var(--border);
-  height:220px;
-  background: linear-gradient(135deg, rgba(26,34,56,.9), rgba(11,16,32,.9));
+/* Image wrappers (with graceful fallback if files are missing) */
+.imgWrap{
   position:relative;
+  background: linear-gradient(135deg, rgba(26,34,56,.92), rgba(11,16,32,.92));
 }
-.heroImage img{
-  width:100%;height:100%;object-fit:cover;display:block;
+.imgWrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
   filter:saturate(1.05) contrast(1.05);
 }
-.heroImage .overlay{
-  position:absolute;inset:0;
-  background: linear-gradient(180deg, rgba(11,16,32,.25), rgba(11,16,32,.85));
+.imgWrap.fallback::before{
+  content: attr(data-label);
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  text-align:center;
+  color: rgba(154,164,178,.95);
+  font-weight:900;
+  letter-spacing:.2px;
 }
-.heroImage .caption{
+.imgWrap .overlay{
+  position:absolute;inset:0;
+  background: linear-gradient(180deg, rgba(11,16,32,.18), rgba(11,16,32,.85));
+  pointer-events:none;
+}
+.imgWrap .caption{
   position:absolute;left:14px;right:14px;bottom:12px;
   font-weight:900;
   font-size:13px;
   color: rgba(230,238,248,.92);
+  pointer-events:none;
+}
+
+.heroImage{
+  border-top:1px solid var(--border);
+  height:220px;
 }
 
 section{padding:34px 0}
@@ -218,15 +238,7 @@ h2{margin:0;font-size:22px;letter-spacing:-.3px;color:var(--accent)}
   font-style:italic;
 }
 
-.serviceImg{
-  width:100%;
-  height:210px;
-  background: linear-gradient(135deg, rgba(26,34,56,.9), rgba(11,16,32,.9));
-  border-bottom:1px solid var(--border);
-}
-.serviceImg img{
-  width:100%;height:100%;object-fit:cover;display:block;
-}
+.serviceImg{height:210px;border-bottom:1px solid var(--border)}
 
 .gridSmall{
   display:grid;
@@ -350,7 +362,7 @@ footer{
         <a class="btn ghost" href="#process">How it Works</a>
         <a class="btn primary" href="#estimate">Estimate</a>
         <a class="btn" href="tel:+14062244199">Call</a>
-        <a class="btn" href="mailto:scheduling@bitterrootgg.com" onclick="return reportLeadConversion(this.href);">Email</a>
+        <a class="btn lead" href="mailto:scheduling@bitterrootgg.com">Email</a>
         <a class="btn" href="https://www.facebook.com/BitterrootGG" target="_blank" rel="noopener">Facebook</a>
       </div>
     </div>
@@ -370,7 +382,7 @@ footer{
 
           <div class="heroCtas">
             <a class="btn primary" href="#estimate">Build a quick estimate</a>
-            <a class="btn" href="mailto:scheduling@bitterrootgg.com" onclick="return reportLeadConversion(this.href);">Request a quote</a>
+            <a class="btn lead" href="mailto:scheduling@bitterrootgg.com">Request a quote</a>
             <a class="btn" href="tel:+14062244199">(406) 224-4199</a>
           </div>
 
@@ -392,8 +404,9 @@ footer{
             <li>Material delivery with clear quantities and expectations</li>
           </ul>
 
-          <div class="heroImage" aria-label="Hero image">
-            <img src="assets/hero.jpg" alt="Bitterroot Ground & Gravel working in Western Montana" loading="lazy" />
+          <div class="imgWrap heroImage" data-label="Hero Image (add assets/hero.jpg)">
+            <img src="assets/hero.jpg" alt="Bitterroot Ground & Gravel working in Western Montana" loading="lazy"
+                 onerror="imgFail(this,'Hero Image (add assets/hero.jpg)')" />
             <div class="overlay" aria-hidden="true"></div>
             <div class="caption">Clearing. Access. Peace of Mind.</div>
           </div>
@@ -412,8 +425,9 @@ footer{
       <div class="grid">
 
         <article class="card serviceCard">
-          <div class="serviceImg">
-            <img src="assets/forestry-mulching.jpg" alt="Forestry mulching and vegetation management in Western Montana" loading="lazy" />
+          <div class="imgWrap serviceImg" data-label="Forestry Mulching (add assets/forestry-mulching.jpg)">
+            <img src="assets/forestry-mulching.jpg" alt="Forestry mulching and vegetation management in Western Montana" loading="lazy"
+                 onerror="imgFail(this,'Forestry Mulching (add assets/forestry-mulching.jpg)')" />
           </div>
           <div class="serviceInner">
             <h3>Forestry Mulching &amp; Vegetation Management</h3>
@@ -432,8 +446,9 @@ footer{
         </article>
 
         <article class="card serviceCard">
-          <div class="serviceImg">
-            <img src="assets/defensible-space.jpg" alt="Defensible space clearing and wildfire mitigation around a home" loading="lazy" />
+          <div class="imgWrap serviceImg" data-label="Defensible Space (add assets/defensible-space.jpg)">
+            <img src="assets/defensible-space.jpg" alt="Defensible space clearing and wildfire mitigation around a home" loading="lazy"
+                 onerror="imgFail(this,'Defensible Space (add assets/defensible-space.jpg)')" />
           </div>
           <div class="serviceInner">
             <h3>Defensible Space &amp; Wildfire Mitigation</h3>
@@ -452,8 +467,9 @@ footer{
         </article>
 
         <article class="card serviceCard">
-          <div class="serviceImg">
-            <img src="assets/access-site-prep.jpg" alt="Access creation and site preparation using heavy equipment" loading="lazy" />
+          <div class="imgWrap serviceImg" data-label="Access & Site Prep (add assets/access-site-prep.jpg)">
+            <img src="assets/access-site-prep.jpg" alt="Access creation and site preparation using heavy equipment" loading="lazy"
+                 onerror="imgFail(this,'Access & Site Prep (add assets/access-site-prep.jpg)')" />
           </div>
           <div class="serviceInner">
             <h3>Access Creation &amp; Site Preparation</h3>
@@ -472,8 +488,9 @@ footer{
         </article>
 
         <article class="card serviceCard">
-          <div class="serviceImg">
-            <img src="assets/material-delivery.jpg" alt="Gravel, rock, and topsoil delivery for driveways and site work" loading="lazy" />
+          <div class="imgWrap serviceImg" data-label="Material Delivery (add assets/material-delivery.jpg)">
+            <img src="assets/material-delivery.jpg" alt="Gravel, rock, and topsoil delivery for driveways and site work" loading="lazy"
+                 onerror="imgFail(this,'Material Delivery (add assets/material-delivery.jpg)')" />
           </div>
           <div class="serviceInner">
             <h3>Gravel, Rock &amp; Topsoil Delivery</h3>
@@ -618,7 +635,7 @@ footer{
 
       <div class="cta">
         <h2>Clearing. Access. Peace of Mind.</h2>
-        <a href="mailto:scheduling@bitterrootgg.com" onclick="return reportLeadConversion(this.href);">Request an Official Quote</a>
+        <a class="lead" href="mailto:scheduling@bitterrootgg.com">Request an Official Quote</a>
       </div>
     </div>
   </section>
@@ -628,7 +645,7 @@ footer{
   © <span id="year"></span> Bitterroot Ground &amp; Gravel · Western Montana
   <div class="footer-links">
     <a href="tel:+14062244199">Call</a>
-    <a href="mailto:scheduling@bitterrootgg.com" onclick="return reportLeadConversion(this.href);">Email</a>
+    <a class="lead" href="mailto:scheduling@bitterrootgg.com">Email</a>
     <a href="https://www.facebook.com/BitterrootGG" target="_blank" rel="noopener">Facebook</a>
   </div>
 </footer>
@@ -636,34 +653,33 @@ footer{
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* =========
-   Lead conversion event (your snippet)
-   Fires ONLY when someone clicks a lead action (quote/email)
-   ========= */
-function reportLeadConversion(url){
-  // If gtag isn't ready for some reason, just proceed.
-  if (typeof gtag !== "function") {
-    if (url) window.location.href = url;
-    return false;
-  }
-
-  // Your event snippet, with a callback so we don’t drop the event.
-  gtag('event', 'conversion', {
-    'send_to': 'AW-17830021528/wVfwCLj1gdsbEJiTgrZC',
-    'value': 1.0,
-    'currency': 'USD',
-    'event_callback': function() {
-      if (url) window.location.href = url;
-    }
-  });
-
-  // Safety fallback in case the callback never fires
-  setTimeout(function(){
-    if (url) window.location.href = url;
-  }, 500);
-
-  return false; // prevent immediate navigation; we redirect via callback
+function imgFail(img, label){
+  try{
+    const wrap = img.parentElement;
+    img.style.display = "none";
+    wrap.classList.add("fallback");
+    wrap.setAttribute("data-label", label || "Image missing");
+  }catch(e){}
 }
+
+/* Your conversion snippet, fired on "lead" clicks.
+   IMPORTANT: We do NOT block navigation, so mailto works reliably. */
+function fireLeadConversion(){
+  try{
+    if (typeof gtag === "function") {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17830021528/wVfwCLj1gdsbEJiTgrZC',
+        'value': 1.0,
+        'currency': 'USD'
+      });
+    }
+  }catch(e){}
+}
+
+// Attach conversion to all lead links (Email + Request Quote)
+document.querySelectorAll('a.lead').forEach(a=>{
+  a.addEventListener('click', fireLeadConversion, { passive: true });
+});
 
 function syncFormUI(){
   const service = document.getElementById("service").value;
