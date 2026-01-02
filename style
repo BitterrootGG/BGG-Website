@@ -6,6 +6,49 @@
   <title>Bitterroot Ground & Gravel | Land Clearing & Site Services</title>
   <meta name="description" content="Bitterroot Ground & Gravel provides professional forestry mulching, land clearing, site prep, and material delivery throughout Western Montana." />
 
+.estimate-form {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.estimate-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.estimate-form input,
+.estimate-form select,
+.estimate-form textarea {
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #0f172a;
+  color: var(--fg);
+}
+
+.estimate-form small {
+  color: var(--muted);
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.estimate-result {
+  margin-top: 2rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(0,0,0,0.25);
+}
+
+.disclaimer {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
   <style>
     :root {
       --bg: #0b1020;
