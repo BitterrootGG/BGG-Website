@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Land Management Quote Builder - BitterrootGG</title>
+  <style>
+    :root { --bg:#0b1020; --fg:#e6eef8; --accent:#7bd389; --card-bg:rgba(255,255,255,0.02); --border:#2d3748; }
+    * { box-sizing: border-box; }
+    body {
+      margin:0;
+      padding:20px;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:var(--fg);
+      line-height:1.6;
+    }
+    .container { max-width:1200px; margin:0 auto; }
+    .header {
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:24px;
+      border-radius:12px;
+      margin-bottom:24px;
+      box-shadow:0 6px 30px rgba(2,6,23,0.6);
+    }
+    .header h1 { margin:0 0 8px; font-size:2rem; color:var(--accent); }
+    .header p { margin:0; color:#b9c6d9; }
+    .nav { margin-bottom:24px; }
+    .nav a { color:var(--accent); text-decoration:none; }
+    .nav a:hover { text-decoration:underline; }
+    
+    .section {
+      background:var(--card-bg);
+      padding:24px;
+      border-radius:12px;
+      margin-bottom:24px;
+      border:1px solid var(--border);
+    }
+    .section h2 { margin:0 0 16px; color:var(--accent); font-size:1.5rem; border-bottom:2px solid var(--border); padding-bottom:8px; }
+    .section h3 { margin:16px 0 12px; color:#b9c6d9; font-size:1.2rem; }
+    
+    .form-group { margin-bottom:16px; }
+    .form-group label { display:block; margin-bottom:6px; font-weight:600; }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group input[type="number"],
+    .form-group input[type="date"],
+    .form-group textarea,
+    .form-group select {
+      width:100%;
+      padding:10px;
+      border:1px solid var(--border);
+      border-radius:6px;
+      background:#1a2332;
+      color:var(--fg);
+      font-family:inherit;
+    }
+    .form-group textarea { min-height:80px; resize:vertical; }
+    
+    .checkbox-group { margin-bottom:8px; }
+    .checkbox-group label {
+      display:flex;
+      align-items:start;
+      cursor:pointer;
+      padding:8px;
+      border-radius:6px;
+      transition:background 0.2s;
+    }
+    .checkbox-group label:hover { background:rgba(123,211,137,0.1); }
+    .checkbox-group input[type="checkbox"] {
+      margin-right:10px;
+      margin-top:4px;
+      cursor:pointer;
+      width:18px;
+      height:18px;
+    }
+    .checkbox-group input[type="number"] {
+      width:80px;
+      padding:4px 8px;
+      margin-left:10px;
+      border:1px solid var(--border);
+      border-radius:4px;
+      background:#1a2332;
+      color:var(--fg);
+    }
+    
+    .item-details {
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-left:28px;
+      margin-top:8px;
+    }
+    .item-details input, .item-details select {
+      padding:4px 8px;
+      border:1px solid var(--border);
+      border-radius:4px;
+      background:#1a2332;
+      color:var(--fg);
+    }
+    .item-details label { margin:0; font-weight:normal; font-size:0.9rem; }
+    
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    @media (max-width: 768px) { .grid-2 { grid-template-columns:1fr; } }
+    
+    .button {
+      display:inline-block;
+      padding:12px 24px;
+      background:var(--accent);
+      color:#04220a;
+      border:none;
+      border-radius:8px;
+      font-weight:600;
+      cursor:pointer;
+      text-decoration:none;
+      font-size:1rem;
+      margin-right:12px;
+      margin-bottom:12px;
+    }
+    .button:hover { background:#8fe89d; }
+    .button-secondary {
+      background:#2d3748;
+      color:var(--fg);
+    }
+    .button-secondary:hover { background:#3d4858; }
+    
+    .quote-summary {
+      background:#1a2332;
+      padding:20px;
+      border-radius:8px;
+      margin-top:24px;
+    }
+    .quote-summary h3 { margin-top:0; }
+    .summary-line {
+      display:flex;
+      justify-content:space-between;
+      padding:8px 0;
+      border-bottom:1px solid var(--border);
+    }
+    .summary-line:last-child { border-bottom:none; font-weight:600; font-size:1.2rem; }
+    
+    .print-view { display:none; }
+    @media print {
+      body { background:white; color:black; }
+      .no-print { display:none !important; }
+      .print-view { display:block; }
+      .section { border:1px solid #ccc; page-break-inside:avoid; }
+    }
+    
+    .notes { font-size:0.9rem; color:#9fb1c8; font-style:italic; margin-top:4px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav no-print">
+      <a href="index.html">← Back to Home</a>
+    </div>
+    
+    <div class="header">
+      <h1>Land Management Quote Builder</h1>
+      <p>Bitterroot Ground & Gravel - Comprehensive Checklist & Quote Generator</p>
+    </div>
+    
+    <!-- Client Information -->
+    <div class="section">
+      <h2>Client & Project Information</h2>
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="clientName">Client Name *</label>
+          <input type="text" id="clientName" required />
+        </div>
+        <div class="form-group">
+          <label for="clientEmail">Email</label>
+          <input type="email" id="clientEmail" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="clientPhone">Phone</label>
+          <input type="tel" id="clientPhone" />
+        </div>
+        <div class="form-group">
+          <label for="projectDate">Project Date</label>
+          <input type="date" id="projectDate" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="projectLocation">Project Location/Address *</label>
+        <input type="text" id="projectLocation" required />
+      </div>
+      <div class="form-group">
+        <label for="projectDescription">Project Description</label>
+        <textarea id="projectDescription" placeholder="Brief description of the land management project"></textarea>
+      </div>
+    </div>
+    
+    <!-- Quote Information & Scope of Work -->
+    <div class="section">
+      <h2>Quote Information & Scope of Work</h2>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="quoteDate">Quote Date *</label>
+          <input type="date" id="quoteDate" required />
+        </div>
+        <div class="form-group">
+          <label for="validThrough">Valid Through *</label>
+          <input type="date" id="validThrough" required />
+        </div>
+      </div>
+      
+      <h3>1. Scope of Work</h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="scope-forestry" /> <span>Forestry Mulching</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="scope-grinding" /> <span>Stump Grinding</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="scope-excavation" /> <span>Stump Excavation / Removal</span></label>
+      </div>
+      
+      <div class="form-group" style="margin-top:20px;">
+        <label for="workDescription">Description of Work</label>
+        <textarea id="workDescription" rows="4" placeholder="Detailed description of the work to be performed..."></textarea>
+      </div>
+      
+      <h3>Vegetation Size Limits</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="maxTreeDiameter">Maximum tree diameter (inches DBH)</label>
+          <input type="number" id="maxTreeDiameter" min="0" step="1" />
+        </div>
+        <div class="form-group">
+          <label for="stumpDiameterRange">Stump diameter range (inches)</label>
+          <input type="text" id="stumpDiameterRange" placeholder="e.g., 6-24" />
+        </div>
+        <div class="form-group">
+          <label for="grindDepth">Grind depth (inches below grade)</label>
+          <input type="number" id="grindDepth" min="0" step="1" />
+        </div>
+      </div>
+      
+      <div style="background:#2d1a1a;padding:16px;border-radius:8px;margin-top:16px;border-left:4px solid #d97989;">
+        <h4 style="margin-top:0;color:#f0a0a0;">Exclusions (unless added in writing)</h4>
+        <p style="margin-bottom:0;line-height:1.8;">Rocks, scrap metal, wire, fencing, concrete, foundations, buried debris, hazardous materials, or unknown underground obstructions.</p>
+      </div>
+      
+      <h3 style="margin-top:24px;">2. Pricing Structure</h3>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
+        <div class="checkbox-group">
+          <label><input type="radio" name="pricingStructure" id="pricing-acre" value="acre" /> <span>Per Acre</span></label>
+        </div>
+        <div class="checkbox-group">
+          <label><input type="radio" name="pricingStructure" id="pricing-day" value="day" /> <span>Per Day</span></label>
+        </div>
+        <div class="checkbox-group">
+          <label><input type="radio" name="pricingStructure" id="pricing-hourly" value="hourly" /> <span>Hourly</span></label>
+        </div>
+        <div class="checkbox-group">
+          <label><input type="radio" name="pricingStructure" id="pricing-flat" value="flat" /> <span>Flat Rate</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="customRate">Custom Rate (optional)</label>
+        <input type="number" id="customRate" min="0" step="0.01" placeholder="Enter custom rate if applicable" />
+      </div>
+    </div>
+    
+    <!-- Site Assessment Checklist -->
+    <div class="section">
+      <h2>Site Assessment Checklist</h2>
+      <p class="notes">Document these items during site visit</p>
+      
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="site-access" /> <span>Site accessibility assessment (road conditions, entry points)</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="site-terrain" /> <span>Terrain evaluation (slopes, elevation changes, obstacles)</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="site-soil" /> <span>Soil type and condition analysis</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="site-drainage" /> <span>Existing drainage patterns documented</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="site-vegetation" /> <span>Vegetation and clearing requirements noted</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="site-utilities" /> <span>Underground utilities marked (call before you dig)</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="site-permits" /> <span>Permit requirements identified</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="site-photos" /> <span>Site photos and measurements taken</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="site-boundaries" /> <span>Property boundaries confirmed</span></label>
+      </div>
+    </div>
+    
+    <!-- Equipment & Services -->
+    <div class="section">
+      <h2>Equipment & Services</h2>
+      
+      <h3>Excavation Services</h3>
+      <p class="notes">Attachments cost is included in the daily rate - no individual upcharge for additional owned equipment. Rental equipment (excavator, dozer, grader, compactor) will be billed at rental rate + operator cost and discussed with property owner prior to rental.</p>
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="excavator" />
+          <span>Excavator work</span>
+        </label>
+        <div class="item-details" id="excavator-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="125" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="125" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="dozer" />
+          <span>Dozer/Bulldozer work</span>
+        </label>
+        <div class="item-details" id="dozer-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="150" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="150" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="grader" />
+          <span>Grader work</span>
+        </label>
+        <div class="item-details" id="grader-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="135" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="135" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="compactor" />
+          <span>Compaction equipment</span>
+        </label>
+        <div class="item-details" id="compactor-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="100" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="100" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <h3>Hauling & Materials</h3>
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="gravel-delivery" />
+          <span>Gravel delivery</span>
+        </label>
+        <div class="item-details" id="gravel-delivery-details" style="display:none;">
+          <label>Tons: <input type="number" class="service-hours" data-rate="45" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="45" min="0" step="5" />/ton</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="topsoil" />
+          <span>Topsoil delivery</span>
+        </label>
+        <div class="item-details" id="topsoil-details" style="display:none;">
+          <label>Yards: <input type="number" class="service-hours" data-rate="35" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="35" min="0" step="5" />/yard</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="hauling" />
+          <span>Material hauling (dump truck)</span>
+        </label>
+        <div class="item-details" id="hauling-details" style="display:none;">
+          <label>Loads: <input type="number" class="service-hours" data-rate="150" min="0" step="1" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="150" min="0" step="10" />/load</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="dump-trailer" />
+          <span>Dump trailer service</span>
+        </label>
+        <div class="item-details" id="dump-trailer-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="75" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="75" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <h3>Brush Clearing Services</h3>
+      <p class="notes">Average production rate: 1-2 acres per day (varies by ground conditions, weather, and vegetation density)</p>
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="light-brush" />
+          <span>Light brush clearing</span>
+        </label>
+        <div class="item-details" id="light-brush-details" style="display:none;">
+          <label>Days: <input type="number" class="service-hours" data-rate="1600" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="1600" min="0" step="50" />/day</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="medium-brush" />
+          <span>Medium brush clearing</span>
+        </label>
+        <div class="item-details" id="medium-brush-details" style="display:none;">
+          <label>Days: <input type="number" class="service-hours" data-rate="2200" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="2200" min="0" step="50" />/day</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="dense-brush" />
+          <span>Dense brush and timber removal (over 8" diameter)</span>
+        </label>
+        <div class="item-details" id="dense-brush-details" style="display:none;">
+          <label>Days: <input type="number" class="service-hours" data-rate="3000" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="3000" min="0" step="50" />/day</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="brush-removal" />
+          <span>Brush removal (general)</span>
+        </label>
+        <div class="item-details" id="brush-removal-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="125" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="125" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="timber-removal" />
+          <span>Timber removal/piling (owner discretion)</span>
+        </label>
+        <div class="item-details" id="timber-removal-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="140" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="140" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <h3>Other Land Management Services</h3>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="road-building" />
+          <span>Road building/driveway construction</span>
+        </label>
+        <div class="item-details" id="road-building-details" style="display:none;">
+          <label>Linear Feet: <input type="number" class="service-hours" data-rate="15" min="0" step="10" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="15" min="0" step="1" />/ft</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="drainage" />
+          <span>Drainage installation (ditches, culverts)</span>
+        </label>
+        <div class="item-details" id="drainage-details" style="display:none;">
+          <label>Linear Feet: <input type="number" class="service-hours" data-rate="12" min="0" step="10" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="12" min="0" step="1" />/ft</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="pond" />
+          <span>Pond construction/excavation</span>
+        </label>
+        <div class="item-details" id="pond-details" style="display:none;">
+          <label>Cubic Yards: <input type="number" class="service-hours" data-rate="8" min="0" step="10" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="8" min="0" step="1" />/yd³</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="grading" />
+          <span>Site grading and leveling</span>
+        </label>
+        <div class="item-details" id="grading-details" style="display:none;">
+          <label>Square Feet: <input type="number" class="service-hours" data-rate="0.50" min="0" step="100" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="0.50" min="0" step="0.05" />/sq ft</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="erosion" />
+          <span>Erosion control measures</span>
+        </label>
+        <div class="item-details" id="erosion-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="110" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="110" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="stump-removal" />
+          <span>Stump removal ($200 mobilization + $7 per inch of diameter)</span>
+        </label>
+        <div class="item-details" id="stump-removal-details" style="display:none;">
+          <label>Total Inches (diameter): <input type="number" class="service-hours" data-rate="7" min="0" step="1" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="7" min="0" step="1" />/inch</label>
+          <p class="notes" style="margin-left:0;margin-top:8px;">Includes $200 mobilization fee (added automatically)</p>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="mulch-removal" />
+          <span>Mulch removal</span>
+        </label>
+        <div class="item-details" id="mulch-removal-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="100" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="100" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="foundation-prep" />
+          <span>Foundation preparation</span>
+        </label>
+        <div class="item-details" id="foundation-prep-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="130" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="130" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="compacting-service" />
+          <span>Compacting service</span>
+        </label>
+        <div class="item-details" id="compacting-service-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="95" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="95" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <h3>Snow Removal</h3>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="snow-removal" />
+          <span>Snow removal service</span>
+        </label>
+        <div class="item-details" id="snow-removal-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="120" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="120" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobilization & Travel -->
+    <div class="section">
+      <h2>Mobilization & Travel</h2>
+      
+      <div class="form-group">
+        <label for="projectDistance">Distance to project site (miles from base)</label>
+        <input type="number" id="projectDistance" min="0" step="1" value="0" />
+        <p class="notes">Base mobilization fee: $200. Additional $3.50/mile for distances over 15 miles.</p>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" id="includeMobilization" checked />
+          <span>Include mobilization fee in quote</span>
+        </label>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" id="rvMobilization" />
+          <span>RV mobilization option (for projects over 100 miles - alternative to lodging fees)</span>
+        </label>
+      </div>
+      <div id="rv-note" style="display:none; margin-left:28px; margin-top:8px;">
+        <p class="notes">RV mobilization eliminates separate lodging costs for extended projects. Client provides RV hookups on site.</p>
+      </div>
+      
+      <div class="checkbox-group" id="lodging-option" style="display:none;">
+        <label>
+          <input type="checkbox" class="service-item" data-service="lodging" />
+          <span>Lodging costs (for multi-day projects)</span>
+        </label>
+        <div class="item-details" id="lodging-details" style="display:none;">
+          <label>Nights: <input type="number" class="service-hours" data-rate="150" min="0" step="1" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="150" min="0" step="10" />/night</label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Additional Considerations -->
+    <div class="section">
+      <h2>Additional Considerations</h2>
+      
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="consider-permits" /> <span>Permit fees (to be added separately)</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="consider-disposal" /> <span>Material disposal fees</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="consider-weather" /> <span>Weather delays contingency</span></label>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="consider-access" /> <span>Special access requirements</span></label>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="access-building" />
+          <span>Building access to property</span>
+        </label>
+        <div class="item-details" id="access-building-details" style="display:none;">
+          <label>Hours: <input type="number" class="service-hours" data-rate="140" min="0" step="0.5" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="140" min="0" step="5" />/hr</label>
+        </div>
+      </div>
+      
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" class="service-item" data-service="permitting" />
+          <span>Permitting services (can be provided by owner)</span>
+        </label>
+        <div class="item-details" id="permitting-details" style="display:none;">
+          <label>Flat Fee: <input type="number" class="service-hours" data-rate="500" min="0" step="1" value="1" /></label>
+          <label>Rate: $<input type="number" class="service-rate" value="500" min="0" step="50" />/project</label>
+        </div>
+      </div>
+      
+      <div class="form-group" style="margin-top:20px;">
+        <label for="additionalNotes">Additional Notes & Special Requirements</label>
+        <textarea id="additionalNotes" placeholder="Include any special conditions, access issues, timeline constraints, or other relevant information"></textarea>
+      </div>
+    </div>
+    
+    <!-- Owner Responsibilities & Liability -->
+    <div class="section">
+      <h2>Owner Responsibilities & Liability</h2>
+      <div style="background:#2d1a1a;padding:16px;border-radius:8px;border-left:4px solid #d97989;">
+        <h3 style="margin-top:0;color:#f0a0a0;">Important: Property Owner Requirements</h3>
+        <p style="margin-bottom:12px;">Prior to the start of work, the property owner is <strong>required</strong> to:</p>
+        <ul style="margin:8px 0;padding-left:24px;line-height:1.8;">
+          <li>Walk the entire property where work will be performed</li>
+          <li>Identify and clearly mark with <strong>marking flags</strong> all of the following:
+            <ul style="margin-top:6px;">
+              <li>Property boundaries</li>
+              <li>Any hazards (rocks, stumps, wells, septic systems, utilities, etc.)</li>
+              <li>Timber or trees designated for removal</li>
+              <li>Any structures, landscaping, or features to be protected</li>
+            </ul>
+          </li>
+        </ul>
+        <p style="margin-top:12px;margin-bottom:0;"><strong>Liability Notice:</strong> Any damage to equipment resulting from the property owner's negligence or failure to complete the above requirements may result in charges for equipment repair or replacement. The owner assumes responsibility for accurate marking and identification of all site conditions.</p>
+      </div>
+      <div class="checkbox-group" style="margin-top:16px;">
+        <label>
+          <input type="checkbox" id="owner-walkthrough" required />
+          <span><strong>I acknowledge that I have completed (or will complete prior to work start) the property walkthrough and marking requirements outlined above</strong></span>
+        </label>
+      </div>
+    </div>
+    
+    <!-- Quote Summary -->
+    <div class="section">
+      <h2>Quote Summary</h2>
+      <div id="quote-items"></div>
+      <div class="quote-summary">
+        <h3>Total Estimate</h3>
+        <div class="summary-line">
+          <span>Subtotal:</span>
+          <span id="subtotal">$0.00</span>
+        </div>
+        <div class="summary-line">
+          <span>Tax (if applicable):</span>
+          <div>
+            <input type="number" id="taxRate" value="0" min="0" max="100" step="0.1" style="width:60px;padding:4px;" />%
+            <span id="taxAmount" style="margin-left:10px;">$0.00</span>
+          </div>
+        </div>
+        <div class="summary-line">
+          <span>Total:</span>
+          <span id="total">$0.00</span>
+        </div>
+      </div>
+      
+      <div style="margin-top:24px;" class="no-print">
+        <button class="button" onclick="calculateQuote()">Calculate Quote</button>
+        <button class="button button-secondary" onclick="window.print()">Print/Save PDF</button>
+        <button class="button button-secondary" onclick="clearForm()">Clear Form</button>
+      </div>
+      
+      <div class="notes" style="margin-top:16px;">
+        * This is an estimate only. Final costs may vary based on site conditions, weather, and other factors. Valid for 30 days.
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Toggle service details when checkbox is checked
+    document.querySelectorAll('.service-item').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        const service = this.dataset.service;
+        const details = document.getElementById(service + '-details');
+        if (details) {
+          details.style.display = this.checked ? 'flex' : 'none';
+          if (!this.checked) {
+            // Clear values when unchecked
+            details.querySelectorAll('input').forEach(input => input.value = '');
+          }
+        }
+        calculateQuote();
+      });
+    });
+    
+    // Recalculate when any service input changes
+    document.querySelectorAll('.service-hours, .service-rate').forEach(input => {
+      input.addEventListener('input', calculateQuote);
+    });
+    
+    document.getElementById('taxRate').addEventListener('input', calculateQuote);
+    document.getElementById('projectDistance').addEventListener('input', calculateQuote);
+    document.getElementById('includeMobilization').addEventListener('change', calculateQuote);
+    
+    // Handle RV mobilization option
+    document.getElementById('rvMobilization').addEventListener('change', function() {
+      const rvNote = document.getElementById('rv-note');
+      const lodgingOption = document.getElementById('lodging-option');
+      const distance = parseFloat(document.getElementById('projectDistance').value) || 0;
+      
+      if (this.checked) {
+        rvNote.style.display = 'block';
+        // Hide lodging option when RV is selected
+        lodgingOption.style.display = 'none';
+        const lodgingCheckbox = document.querySelector('[data-service="lodging"]');
+        if (lodgingCheckbox) lodgingCheckbox.checked = false;
+      } else {
+        rvNote.style.display = 'none';
+        // Show lodging option for long distances
+        if (distance > 100) {
+          lodgingOption.style.display = 'block';
+        }
+      }
+      calculateQuote();
+    });
+    
+    // Show/hide lodging option based on distance
+    document.getElementById('projectDistance').addEventListener('input', function() {
+      const distance = parseFloat(this.value) || 0;
+      const lodgingOption = document.getElementById('lodging-option');
+      const rvCheckbox = document.getElementById('rvMobilization');
+      
+      if (distance > 100 && !rvCheckbox.checked) {
+        lodgingOption.style.display = 'block';
+      } else {
+        lodgingOption.style.display = 'none';
+      }
+    });
+    
+    function calculateQuote() {
+      let subtotal = 0;
+      const items = [];
+      
+      // Check if stump removal is selected
+      const stumpRemovalCheckbox = document.querySelector('[data-service="stump-removal"]');
+      const isStumpRemovalSelected = stumpRemovalCheckbox && stumpRemovalCheckbox.checked;
+      
+      document.querySelectorAll('.service-item:checked').forEach(checkbox => {
+        const service = checkbox.dataset.service;
+        const details = document.getElementById(service + '-details');
+        if (details) {
+          const hoursInput = details.querySelector('.service-hours');
+          const rateInput = details.querySelector('.service-rate');
+          
+          if (hoursInput && rateInput) {
+            const quantity = parseFloat(hoursInput.value) || 0;
+            const rate = parseFloat(rateInput.value) || 0;
+            const itemTotal = quantity * rate;
+            
+            if (quantity > 0 && rate > 0) {
+              const label = checkbox.parentElement.querySelector('span').textContent;
+              items.push({
+                name: label,
+                quantity: quantity,
+                rate: rate,
+                total: itemTotal
+              });
+              subtotal += itemTotal;
+            }
+          }
+        }
+      });
+      
+      // Add stump removal mobilization fee if stump removal is selected
+      if (isStumpRemovalSelected) {
+        const stumpRemovalDetails = document.getElementById('stump-removal-details');
+        if (stumpRemovalDetails) {
+          const stumpInches = parseFloat(stumpRemovalDetails.querySelector('.service-hours').value) || 0;
+          if (stumpInches > 0) {
+            items.push({
+              name: 'Stump removal mobilization fee',
+              quantity: 1,
+              rate: 200,
+              total: 200
+            });
+            subtotal += 200;
+          }
+        }
+      }
+      
+      // Calculate mobilization fee
+      const distance = parseFloat(document.getElementById('projectDistance').value) || 0;
+      const includeMobilization = document.getElementById('includeMobilization').checked;
+      
+      if (includeMobilization && distance >= 0) {
+        let mobilizationFee = 200; // Base fee
+        if (distance > 15) {
+          mobilizationFee += (distance - 15) * 3.5; // $3.50 per mile over 15 miles
+        }
+        
+        items.push({
+          name: `Mobilization (${distance} miles)`,
+          quantity: 1,
+          rate: mobilizationFee,
+          total: mobilizationFee
+        });
+        subtotal += mobilizationFee;
+      }
+      
+      // Display items
+      const itemsContainer = document.getElementById('quote-items');
+      if (items.length > 0) {
+        const servicesDiv = document.createElement('div');
+        servicesDiv.style.marginBottom = '16px';
+        
+        const heading = document.createElement('h3');
+        heading.style.marginTop = '0';
+        heading.textContent = 'Selected Services:';
+        servicesDiv.appendChild(heading);
+        
+        items.forEach(item => {
+          const itemDiv = document.createElement('div');
+          itemDiv.style.display = 'flex';
+          itemDiv.style.justifyContent = 'space-between';
+          itemDiv.style.padding = '8px 0';
+          itemDiv.style.borderBottom = '1px solid var(--border)';
+          
+          const nameSpan = document.createElement('span');
+          nameSpan.textContent = item.name;
+          
+          const priceSpan = document.createElement('span');
+          priceSpan.textContent = `${item.quantity.toFixed(2)} × $${item.rate.toFixed(2)} = $${item.total.toFixed(2)}`;
+          
+          itemDiv.appendChild(nameSpan);
+          itemDiv.appendChild(priceSpan);
+          servicesDiv.appendChild(itemDiv);
+        });
+        
+        itemsContainer.innerHTML = '';
+        itemsContainer.appendChild(servicesDiv);
+      } else {
+        itemsContainer.innerHTML = '<p style="color:#9fb1c8;font-style:italic;">No services selected yet.</p>';
+      }
+      
+      // Calculate tax and total
+      const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+      const taxAmount = subtotal * (taxRate / 100);
+      const total = subtotal + taxAmount;
+      
+      document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('taxAmount').textContent = '$' + taxAmount.toFixed(2);
+      document.getElementById('total').textContent = '$' + total.toFixed(2);
+    }
+    
+    function clearForm() {
+      if (confirm('Are you sure you want to clear the entire form?')) {
+        document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"]:not(#taxRate), textarea').forEach(input => {
+          input.value = '';
+        });
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+          if (checkbox.id === 'includeMobilization') {
+            checkbox.checked = true; // Keep mobilization checked by default
+          } else {
+            checkbox.checked = false;
+          }
+        });
+        document.querySelectorAll('.item-details').forEach(details => {
+          details.style.display = 'none';
+        });
+        document.getElementById('taxRate').value = '0';
+        document.getElementById('projectDistance').value = '0';
+        document.getElementById('rv-note').style.display = 'none';
+        document.getElementById('lodging-option').style.display = 'none';
+        calculateQuote();
+      }
+    }
+    
+    // Print styling
+    window.addEventListener('beforeprint', function() {
+      // Add client info to print header
+      const clientName = document.getElementById('clientName').value || 'N/A';
+      const projectLocation = document.getElementById('projectLocation').value || 'N/A';
+      const projectDate = document.getElementById('projectDate').value || 'N/A';
+      
+      document.title = `Quote for ${clientName} - BitterrootGG`;
+    });
+    
+    // Initial calculation
+    calculateQuote();
+  </script>
+</body>
+</html>
