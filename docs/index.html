@@ -1,266 +1,73 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="style/main.css">
   <meta charset="utf-8">
   <title>Bitterroot Ground & Gravel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="description" content="Bitterroot Ground & Gravel provides land clearing, forestry mulching, defensible space, access creation, and material delivery across Western Montana.">
-
-  <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Bitterroot Ground & Gravel</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Land clearing, forestry mulching, defensible space, access creation, and material delivery across Western Montana.">
+
+  <!-- Main Styles -->
   <link rel="stylesheet" href="style/main.css">
 </head>
 
 <body>
 
-<header class="hero">
-  <img src="assets/clearing.jpeg" alt="Land clearing and access work">
-  <div class="hero-content">
-    <h1>Bitterroot Ground & Gravel</h1>
-    <p>Clearing, access, and peace of mind. Built for real properties and real use.</p>
-    <a class="button" href="tel:+14062244199">Call 406-224-4199</a>
-  </div>
-</header>
-
-<main>
-
-<section>
-  <h2>Our Services</h2>
-  <div class="service-grid">
-
-    <a class="service-card" href="services/forestry-mulching.html">
-      <img src="assets/mulching.jpeg" alt="Forestry mulching">
-      <div class="service-label">Forestry Mulching</div>
-    </a>
-
-    <a class="service-card" href="services/defensible-space.html">
-      <img src="assets/defense.jpeg" alt="Defensible space">
-      <div class="service-label">Defensible Space</div>
-    </a>
-
-    <a class="service-card" href="services/access-creation.html">
-      <img src="assets/access.jpeg" alt="Access creation">
-      <div class="service-label">Access Creation</div>
-    </a>
-
-    <a class="service-card" href="services/gravel-materials.html">
-      <img src="assets/delivery.jpeg" alt="Gravel and materials">
-      <div class="service-label">Gravel & Materials</div>
-    </a>
-
-  </div>
-</section>
-
-<section class="feature">
-  <h2>What We Do Best</h2>
-  <img src="assets/do.jpeg" alt="In-place processing and access creation">
-</section>
-
-</main>
-
-<footer>
-  © Bitterroot Ground & Gravel | <a href="tel:+14062244199">Call 406-224-4199</a>
-</footer>
-
-</body>
-</html>
-    
-  body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0b1020;
-      color: #e6eef8;
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* ---------- HERO ---------- */
-    .hero {
-      position: relative;
-      height: 420px;
-      overflow: hidden;
-    }
-
-    .hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hero-content {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to right,
-        rgba(0,0,0,0.75),
-        rgba(0,0,0,0.25)
-      );
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .hero h1 {
-      margin: 0 0 0.5rem;
-      font-size: 2.4rem;
-      letter-spacing: 0.03em;
-    }
-
-    .hero p {
-      max-width: 600px;
-      color: #d0d7e2;
-      margin-bottom: 1.5rem;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
-      background: #7bd389;
-      color: #0b1020;
-      font-weight: 600;
-      border-radius: 6px;
-      width: fit-content;
-    }
-
-    /* ---------- LAYOUT ---------- */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 3rem 1.25rem;
-    }
-
-    section { margin-bottom: 4rem; }
-
-    h2 { margin-bottom: 1.25rem; }
-
-    /* ---------- SERVICES ---------- */
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .service-card {
-      position: relative;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: #11162a;
-      transition: transform 180ms ease, box-shadow 180ms ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-    }
-
-    .service-card img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .service-label {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 0.9rem;
-      background: linear-gradient(
-        to top,
-        rgba(0,0,0,0.8),
-        rgba(0,0,0,0)
-      );
-      font-weight: 700;
-      letter-spacing: 0.03em;
-    }
-
-    /* ---------- FEATURE ---------- */
-    .feature img {
-      width: 100%;
-      border-radius: 12px;
-      display: block;
-    }
-
-    /* ---------- FOOTER ---------- */
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.12);
-      padding: 2rem 1rem;
-      text-align: center;
-      color: #9aa4b2;
-    }
-
-    @media (max-width: 768px) {
-      .hero { height: 320px; }
-      .hero h1 { font-size: 1.9rem; }
-      .service-card img { height: 180px; }
-    }
-  </style>
-</head>
-
-<body>
-
-<!-- HERO -->
-<header class="hero">
-  <img src="assets/clearing.jpeg" alt="Land clearing and access work">
-  <div class="hero-content">
-    <h1>Bitterroot Ground & Gravel</h1>
-    <p>Clearing, access, and peace of mind. Built for real properties and real use.</p>
-    <a class="button" href="tel:+14062244199">Call 406-224-4199</a>
-  </div>
-</header>
-
-<main>
-
-  <!-- SERVICES -->
-  <section>
-    <h2>Our Services</h2>
-
-    <div class="service-grid">
-      <a class="service-card" href="services/forestry-mulching.html">
-        <img src="assets/mulching.jpeg" alt="Forestry mulching">
-        <div class="service-label">Forestry Mulching</div>
-      </a>
-
-      <a class="service-card" href="services/defensible-space.html">
-        <img src="assets/defense.jpeg" alt="Defensible space">
-        <div class="service-label">Defensible Space</div>
-      </a>
-
-      <a class="service-card" href="services/access-creation.html">
-        <img src="assets/access.jpeg" alt="Access creation">
-        <div class="service-label">Access Creation</div>
-      </a>
-
-      <a class="service-card" href="services/gravel-materials.html">
-        <img src="assets/delivery.jpeg" alt="Gravel and materials">
-        <div class="service-label">Gravel & Materials</div>
-      </a>
+  <!-- HERO -->
+  <header class="hero">
+    <img src="assets/clearing.jpeg" alt="Land clearing and access work">
+    <div class="hero-content">
+      <h1>Bitterroot Ground & Gravel</h1>
+      <p>Clearing, access, and peace of mind. Built for real properties and real use.</p>
+      <a class="button" href="tel:+14062244199">Call 406-224-4199</a>
     </div>
-  </section>
+  </header>
 
-  <!-- WHAT WE DO BEST -->
-  <section class="feature">
-    <h2>What We Do Best</h2>
-    <img src="assets/do.jpeg" alt="In-place processing, access creation, defensible space, and material delivery">
-  </section>
+  <!-- MAIN CONTENT -->
+  <main>
 
-</main>
+    <!-- SERVICES -->
+    <section>
+      <h2>Our Services</h2>
 
-<footer>
-  © Bitterroot Ground & Gravel |
-  <a href="tel:+14062244199">Call 406-224-4199</a>
-</footer>
+      <div class="service-grid">
+
+        <a class="service-card" href="services/forestry-mulching.html">
+          <img src="assets/mulching.jpeg" alt="Forestry mulching">
+          <div class="service-label">Forestry Mulching</div>
+        </a>
+
+        <a class="service-card" href="services/defensible-space.html">
+          <img src="assets/defense.jpeg" alt="Defensible space">
+          <div class="service-label">Defensible Space</div>
+        </a>
+
+        <a class="service-card" href="services/access-creation.html">
+          <img src="assets/access.jpeg" alt="Access creation">
+          <div class="service-label">Access Creation</div>
+        </a>
+
+        <a class="service-card" href="services/gravel-materials.html">
+          <img src="assets/delivery.jpeg" alt="Gravel and materials">
+          <div class="service-label">Gravel & Materials</div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- FEATURE -->
+    <section class="feature">
+      <h2>What We Do Best</h2>
+      <img src="assets/do.jpeg" alt="In-place processing, access creation, defensible space, and material delivery">
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © Bitterroot Ground & Gravel |
+    <a href="tel:+14062244199">Call 406-224-4199</a>
+  </footer>
 
 </body>
 </html>
