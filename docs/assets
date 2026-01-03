@@ -1,9 +1,6 @@
-docs/
-├── index.html
-└── assets/
-    ├── access.jpeg
-    ├── clearing.jpeg
-    ├── defense.jpeg
-    ├── delivery.jpeg
-    ├── do.jpeg
-    └── mulching.jpeg
+clearing.jpeg
+mulching.jpeg
+defense.jpeg
+access.jpeg
+delivery.jpeg
+do.jpeg
