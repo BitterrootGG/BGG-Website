@@ -37,7 +37,11 @@
     .hero-content {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, rgba(0,0,0,0.75), rgba(0,0,0,0.25));
+      background: linear-gradient(
+        to right,
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.25)
+      );
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -90,6 +94,12 @@
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.12);
       background: #11162a;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
     }
 
     .service-card img {
@@ -104,12 +114,16 @@
       bottom: 0;
       width: 100%;
       padding: 0.9rem;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.8),
+        rgba(0,0,0,0)
+      );
       font-weight: 700;
       letter-spacing: 0.03em;
     }
 
-    /* ---------- WHAT WE DO BEST ---------- */
+    /* ---------- FEATURE ---------- */
     .feature img {
       width: 100%;
       border-radius: 12px;
@@ -151,25 +165,25 @@
     <h2>Our Services</h2>
 
     <div class="service-grid">
-      <div class="service-card">
+      <a class="service-card" href="services/forestry-mulching.html">
         <img src="assets/mulching.jpeg" alt="Forestry mulching">
         <div class="service-label">Forestry Mulching</div>
-      </div>
+      </a>
 
-      <div class="service-card">
+      <a class="service-card" href="services/defensible-space.html">
         <img src="assets/defense.jpeg" alt="Defensible space">
         <div class="service-label">Defensible Space</div>
-      </div>
+      </a>
 
-      <div class="service-card">
+      <a class="service-card" href="services/access-creation.html">
         <img src="assets/access.jpeg" alt="Access creation">
         <div class="service-label">Access Creation</div>
-      </div>
+      </a>
 
-      <div class="service-card">
-        <img src="assets/delivery.jpeg" alt="Gravel and material delivery">
+      <a class="service-card" href="services/gravel-materials.html">
+        <img src="assets/delivery.jpeg" alt="Gravel and materials">
         <div class="service-label">Gravel & Materials</div>
-      </div>
+      </a>
     </div>
   </section>
 
