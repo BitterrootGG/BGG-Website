@@ -17,7 +17,6 @@
   </script>
 
   <style>
-    /* ================= BASE ================= */
     * {
       box-sizing: border-box;
     }
@@ -35,23 +34,39 @@
       text-decoration: none;
     }
 
-    /* ================= HEADER ================= */
-    header {
-      text-align: center;
-      padding: 3.5rem 1.25rem;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
+    header.hero {
+      position: relative;
+      height: 420px;
+      overflow: hidden;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.3rem;
+    header.hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.75), rgba(0,0,0,0.25));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .hero-content h1 {
+      margin: 0 0 0.5rem;
+      font-size: 2.4rem;
       letter-spacing: 0.03em;
     }
 
-    header p {
-      max-width: 820px;
-      margin: 1rem auto 2rem;
-      color: #9aa4b2;
+    .hero-content p {
+      max-width: 600px;
+      color: #d0d7e2;
+      margin-bottom: 1.5rem;
     }
 
     .button {
@@ -61,9 +76,9 @@
       color: #0b1020;
       font-weight: 600;
       border-radius: 6px;
+      width: fit-content;
     }
 
-    /* ================= LAYOUT ================= */
     main {
       max-width: 1200px;
       margin: 0 auto;
@@ -78,7 +93,6 @@
       margin-bottom: 1.25rem;
     }
 
-    /* ================= SERVICE CARDS ================= */
     .service-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -110,35 +124,6 @@
       letter-spacing: 0.03em;
     }
 
-    /* ================= CALCULATOR ================= */
-    .calculator {
-      max-width: 520px;
-      margin: 0 auto;
-      padding: 1.5rem;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: #11162a;
-    }
-
-    .calculator input,
-    .calculator button {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 0.75rem;
-      border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: #0b1020;
-      color: #e6eef8;
-    }
-
-    .calculator button {
-      background: #7bd389;
-      color: #0b1020;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    /* ================= FOOTER ================= */
     footer {
       border-top: 1px solid rgba(255,255,255,0.12);
       padding: 2rem 1rem;
@@ -146,18 +131,17 @@
       color: #9aa4b2;
     }
 
-    /* ================= MOBILE ================= */
     @media (max-width: 768px) {
-      header h1 {
+      header.hero {
+        height: 320px;
+      }
+
+      .hero-content h1 {
         font-size: 1.9rem;
       }
 
       .service-card img {
         height: 180px;
-      }
-
-      section {
-        margin-bottom: 3rem;
       }
     }
   </style>
@@ -165,49 +149,46 @@
 
 <body>
 
-<header>
-  <h1>Bitterroot Ground & Gravel</h1>
-  <p>Clearing. Access. Peace of Mind. Built for real properties and real use.</p>
-  <a class="button" href="#quote">Request a Quote</a>
+<header class="hero">
+  <img src="assets/clearing.jpeg" alt="Land clearing and access work">
+  <div class="hero-content">
+    <h1>Bitterroot Ground & Gravel</h1>
+    <p>Clearing, access, and peace of mind. Built for real properties and real use.</p>
+    <a class="button" href="tel:+14062244199">Call 406-224-4199</a>
+  </div>
 </header>
 
 <main>
 
-  <!-- SERVICES -->
   <section>
     <h2>Our Services</h2>
 
     <div class="service-grid">
-      <a class="service-card" href="#">
-        <img src="assets/forestry-mulching.jpeg" alt="Forestry mulching">
+      <div class="service-card">
+        <img src="assets/mulching.jpeg" alt="Forestry mulching">
         <div class="service-label">Forestry Mulching</div>
-      </a>
+      </div>
 
-      <a class="service-card" href="#">
-        <img src="assets/defensible-space.jpeg" alt="Defensible space">
+      <div class="service-card">
+        <img src="assets/defense.jpeg" alt="Defensible space">
         <div class="service-label">Defensible Space</div>
-      </a>
+      </div>
 
-      <a class="service-card" href="#">
-        <img src="assets/site-access.jpeg" alt="Access creation">
+      <div class="service-card">
+        <img src="assets/access.jpeg" alt="Access creation">
         <div class="service-label">Access Creation</div>
-      </a>
+      </div>
 
-      <a class="service-card" href="#">
-        <img src="assets/gravel-delivery.jpeg" alt="Gravel delivery">
+      <div class="service-card">
+        <img src="assets/delivery.jpeg" alt="Gravel and material delivery">
         <div class="service-label">Gravel & Materials</div>
-      </a>
+      </div>
     </div>
   </section>
 
-  <!-- QUOTE -->
-  <section id="quote">
-    <h2>Quick Project Estimate</h2>
-
-    <div class="calculator">
-      <input type="number" placeholder="Estimated acreage or area">
-      <button>Get Estimate</button>
-    </div>
+  <section>
+    <h2>What We Do Best</h2>
+    <img src="assets/do.jpeg" alt="What we do best" style="width:100%;border-radius:12px;">
   </section>
 
 </main>
