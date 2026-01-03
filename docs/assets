@@ -1,4 +1,9 @@
-bitterrootgg/
+docs/
 ├── index.html
-├── assets/
-
+└── assets/
+    ├── access.jpeg
+    ├── clearing.jpeg
+    ├── defense.jpeg
+    ├── delivery.jpeg
+    ├── do.jpeg
+    └── mulching.jpeg
