@@ -1,1 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BGG Internal Quote Calculator</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<h1>Internal Quote Calculator</h1>
+
+<label>Vegetation Density</label>
+<select id="density">
+  <option value="1600">Light – $1,600/day</option>
+  <option value="2400">Moderate – $2,400/day</option>
+  <option value="3000">Dense – $3,000/day</option>
+</select>
+
+<label>Slope Tier</label>
+<select id="intSlope">
+  <option value="1">0–6°</option>
+  <option value="1.15">6–12°</option>
+  <option value="1.30">12–18°</option>
+</select>
+
+<label>Acreage</label>
+<input id="intAcres" type="number">
+
+<label>Miles from Stevensville</label>
+<input id="intMiles" type="number">
+
+<button onclick="calculateInternal()">Calculate</button>
+
+<p id="internalResult"></p>
+
+<script src="js/app.js"></script>
+</body>
+</html>
 
