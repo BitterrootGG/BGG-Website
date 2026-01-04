@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Bitterroot Ground & Gravel | Quote Request</title>
 
-  <meta name="description" content="Request a quote for forestry mulching, defensible space, access creation, and site preparation across Western Montana within 125 miles of Missoula.">
+  <meta name="description" content="Forestry mulching, defensible space, access creation, and site preparation across Western Montana within 125 miles of Missoula.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index,follow">
 
@@ -25,20 +25,94 @@
 
 <header class="hero">
   <img
-  src="assets/images/hero-page.jpeg"
-  alt="Forestry mulching and land management in Western Montana"
-  class="hero-image">
+    src="assets/images/hero-page.jpeg"
+    alt="Forestry mulching and land management in Western Montana"
+    class="hero-image">
+
   <h1>Bitterroot Ground & Gravel</h1>
   <p>Professional land management · Western Montana</p>
 </header>
 
 <main class="section">
 
-  <h
-.hero-image {
-  width: 100%;
-  max-height: 360px;
-  object-fit: cover;
-  display: block;
-  margin-bottom: 20px;
-}
+  <h2>Project Intake & Quote Request</h2>
+
+  <p class="notice">
+    Forestry mulching operations are limited to slopes of <strong>18° or less</strong>
+    due to business and safety limitations. Property owners are required to walk the
+    property, mark hazards, and ensure all required permits are in place prior to work.
+    Steep terrain, large timber, or unmarked hazards may increase costs and may require
+    a site visit.
+  </p>
+
+  <form id="intakeForm" onsubmit="sendEstimateEmail(); return false;">
+
+    <label>Name</label>
+    <input id="name" required>
+
+    <label>Email</label>
+    <input id="email" type="email" required>
+
+    <label>Phone</label>
+    <input id="phone" required>
+
+    <label>Preferred Contact Method</label>
+    <select id="contactMethod">
+      <option>Email</option>
+      <option>Call</option>
+      <option>Text</option>
+    </select>
+
+    <label>Best Time to Contact</label>
+    <select id="contactTime">
+      <option>Morning</option>
+      <option>Afternoon</option>
+      <option>Evening</option>
+    </select>
+
+    <label>Estimated Acreage</label>
+    <input id="acreage" type="number" min="0" step="0.1" required>
+
+    <label>Distance from Stevensville, MT (miles)</label>
+    <input id="miles" type="number" min="0" step="1" required>
+
+    <label>Terrain / Slope</label>
+    <select id="slope" onchange="handleSlopeChange()">
+      <option value="0-6">0–6° (standard)</option>
+      <option value="6-12">6–12° (higher cost)</option>
+      <option value="12-18">12–18° (site review required)</option>
+      <option value="over">Over 18° (outside mulching limits)</option>
+    </select>
+
+    <label>Timber larger than 8 inches?</label>
+    <select id="timber">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+
+    <label>Upload Site Photos (required for steep terrain)</label>
+    <input id="photos" type="file" multiple>
+
+    <p class="disclaimer">
+      By submitting this form, I acknowledge that I am responsible for identifying
+      and marking hazards, ensuring all required permits are in place, and understand
+      that damages caused by unmarked hazards, owner negligence, steep slopes, or
+      difficult terrain may result in increased costs or charges for equipment repair
+      or replacement.
+    </p>
+
+    <button type="submit">Submit Quote Request</button>
+
+  </form>
+
+  <p id="estimateResult"></p>
+
+</main>
+
+<footer>
+  © Bitterroot Ground & Gravel · Serving Western Montana (125 miles from Missoula)
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
