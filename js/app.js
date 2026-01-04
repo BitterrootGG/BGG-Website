@@ -13,7 +13,6 @@ function fireGoogleAdsQuoteConversion() {
 }
 
 function sendEstimateEmail() {
-
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const phone = document.getElementById("phone").value;
@@ -26,13 +25,10 @@ function sendEstimateEmail() {
 
   if (slope === "over") {
     document.getElementById("estimateResult").innerText =
-      "Slopes over 18° are outside our standard forestry mulching operations due to business and safety limitations.";
+      "Projects over 18° fall outside our forestry mulching operations.";
     return;
   }
 
-  const manualReview = (slope === "12-18" || timber === "yes");
-
-  // FIRE GOOGLE ADS CONVERSION
   fireGoogleAdsQuoteConversion();
 
   const subject = `Quote Request – ${name}`;
@@ -50,37 +46,10 @@ Estimated Acreage: ${acres}
 Distance from Stevensville: ${miles} miles
 Slope Category: ${slope}
 Timber > 8": ${timber}
-
-Manual Review Required: ${manualReview ? "YES" : "NO"}
-
-Notes:
-- Forestry mulching limited to 18° (business & safety)
-- Steep terrain or large timber requires site review
 `;
 
   window.location.href =
     `mailto:scheduling@bitterrootgg.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-  setTimeout(() => {
-    const replySubject = "Thanks for contacting Bitterroot Ground & Gravel";
-    const replyBody =
-`Hi ${name},
-
-Thanks for reaching out to Bitterroot Ground & Gravel.
-
-We’ve received your quote request and will review it shortly.
-A member of our team will contact you using your preferred method
-during your requested time window.
-
-Final pricing is subject to site conditions and, if required,
-a site visit prior to work.
-
-– Bitterroot Ground & Gravel
-`;
-
-    window.location.href =
-      `mailto:${email}?subject=${encodeURIComponent(replySubject)}&body=${encodeURIComponent(replyBody)}`;
-  }, 1500);
 
   document.getElementById("estimateResult").innerText =
     "Thank you. Your quote request has been submitted.";
@@ -94,10 +63,8 @@ function calculateInternal() {
 
   const days = Math.ceil(acres / 2);
   const mobilization = miles > 15 ? 250 + (miles * 3) : 0;
-
   const total = ((rate * days) + mobilization) * slopeFactor;
 
   document.getElementById("internalResult").innerText =
     `Internal Total: $${Math.round(total).toLocaleString()} | Days: ${days}`;
 }
-
