@@ -2,38 +2,103 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BGG Internal Calculator</title>
-  <meta name="robots" content="noindex,nofollow">
+  <title>Bitterroot Ground & Gravel | Quote</title>
+
+  <meta name="description" content="Forestry mulching, defensible space, access creation, and site preparation across Western Montana within 125 miles of Missoula.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- GOOGLE ADS GLOBAL TAG -->
+  <!-- REPLACE WITH YOUR REAL CONVERSION ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-XXXXXXXXXX');
+  </script>
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<h1>Internal Quote Calculator</h1>
+<header class="hero">
+  <h1>Bitterroot Ground & Gravel</h1>
+  <p>Professional land management · Western Montana</p>
+</header>
 
-<label>Vegetation Density</label>
-<select id="density">
-  <option value="1600">Light – $1,600/day</option>
-  <option value="2400">Moderate – $2,400/day</option>
-  <option value="3000">Dense – $3,000/day</option>
-</select>
+<main class="section">
 
-<label>Slope Tier</label>
-<select id="intSlope">
-  <option value="1">0–6°</option>
-  <option value="1.15">6–12°</option>
-  <option value="1.30">12–18°</option>
-</select>
+<h2>Project Intake & Quote Request</h2>
 
-<label>Acreage</label>
-<input id="intAcres" type="number">
+<p class="notice">
+  Forestry mulching operations are limited to slopes of 18° or less due to business and safety
+  limitations. Property owners must walk the site, mark hazards, and ensure permits are in place.
+</p>
 
-<label>Miles from Stevensville</label>
-<input id="intMiles" type="number">
+<form id="intakeForm" onsubmit="sendEstimateEmail(); return false;">
 
-<button onclick="calculateInternal()">Calculate</button>
+  <label>Name</label>
+  <input id="name" required>
 
-<p id="internalResult"></p>
+  <label>Email</label>
+  <input id="email" type="email" required>
+
+  <label>Phone</label>
+  <input id="phone" required>
+
+  <label>Preferred Contact Method</label>
+  <select id="contactMethod">
+    <option>Email</option>
+    <option>Call</option>
+    <option>Text</option>
+  </select>
+
+  <label>Best Time to Contact</label>
+  <select id="contactTime">
+    <option>Morning</option>
+    <option>Afternoon</option>
+    <option>Evening</option>
+  </select>
+
+  <label>Estimated Acreage</label>
+  <input id="acreage" type="number" required>
+
+  <label>Distance from Stevensville, MT (miles)</label>
+  <input id="miles" type="number" required>
+
+  <label>Terrain / Slope</label>
+  <select id="slope" onchange="handleSlopeChange()">
+    <option value="0-6">0–6°</option>
+    <option value="6-12">6–12°</option>
+    <option value="12-18">12–18° (site review)</option>
+    <option value="over">Over 18° (not eligible)</option>
+  </select>
+
+  <label>Timber larger than 8 inches?</label>
+  <select id="timber">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+  </select>
+
+  <label>Upload Site Photos (required for steep terrain)</label>
+  <input id="photos" type="file" multiple>
+
+  <p class="disclaimer">
+    By submitting, I acknowledge property owner responsibilities, slope limitations,
+    and that damages caused by unmarked hazards or negligence may result in charges
+    for equipment repair or replacement.
+  </p>
+
+  <button type="submit">Submit Quote Request</button>
+</form>
+
+<p id="estimateResult"></p>
+
+</main>
+
+<footer>
+  © Bitterroot Ground & Gravel · Serving Western Montana (125 miles from Missoula)
+</footer>
 
 <script src="js/app.js"></script>
 </body>
